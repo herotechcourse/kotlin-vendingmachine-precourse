@@ -23,6 +23,7 @@ object InputView {
         for (product in allProducts) {
             println(product)
         }
+        //Product price should be greater than 100 and divisible by 10
     }
 
     fun productPurchaseAmountInput() :Int {
