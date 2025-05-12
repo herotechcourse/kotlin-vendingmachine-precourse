@@ -4,7 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputView {
 
-    fun readMoneyAmount():Int {
+    fun readMoneyAmount(message: String):Int {
+        println(message)
         return Console.readLine()
             .trim()
             .toIntOrNull()?.takeIf { it > 0 && it % 10 == 0}
@@ -13,6 +14,7 @@ object InputView {
 
     //  [Cola,1500,20];[Soda,1000,10]
     fun readProductInfo(): List<Product> {
+        println("\nEnter product names, prices, and quantities:")
         val userInput = Console.readLine()
             .trim()
             .split(";")
@@ -42,6 +44,7 @@ object InputView {
     }
 
     fun readPurchasingProduct(products: List<Product>): Product {
+        println("Please enter the name of the product to purchase:")
         val userInput = Console.readLine().trim()
         val productNames = products.map { it.name }
         require(userInput in productNames) { "[ERROR] Invalid input." }

@@ -46,7 +46,7 @@ class Machine(private val amountHolding: Int) {
     }
 
     fun getRemainingInfo(): String {
-        return "Inserted amount: $_remaining KRW"
+        return "\nInserted amount: $_remaining KRW"
     }
 
     fun processOrder(targetProduct: Product) {
