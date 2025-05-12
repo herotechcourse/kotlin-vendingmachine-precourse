@@ -21,8 +21,6 @@ object InputView {
         val input = Console.readLine()
         if (input.isNullOrBlank()) throw IllegalArgumentException("Input cannot be blank.")
         val products = input.split(";").map { it.trim() }
-
-
         return products
     }
 

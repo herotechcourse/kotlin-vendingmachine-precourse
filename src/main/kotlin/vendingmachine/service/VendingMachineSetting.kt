@@ -3,6 +3,7 @@ package vendingmachine.service
 import vendingmachine.view.InputView
 import vendingmachine.view.OutputView
 import vendingmachine.domain.Product
+import vendingmachine.domain.machineProducts
 
 object VendingMachineSetting {
 
@@ -17,17 +18,17 @@ object VendingMachineSetting {
 
         //Next Adding products for the vending machine
         val products = InputView.readProducts()
-        println(products)
-        Product.generateProducts(products)
+        val productsInserted = machineProducts.generateProducts(products)
 
         // Please enter the amount of money:
         val amountCustomer = InputView.readAmountOfMoneyInserted()
 
-
+        //while (amountCustomer )
         //output Inserted amount: 3000 KRW
         OutputView.currentlyAmount(amountCustomer)
 
         //Please enter the name of the product to purchase:
+        InputView.buyProduct()
 
         // output example Cola
 

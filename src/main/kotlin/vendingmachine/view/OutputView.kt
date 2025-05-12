@@ -28,6 +28,5 @@ object OutputView {
     fun changeReturned(amount: Int) {
         println("\nChange returned:")
 
-
     }
 }
