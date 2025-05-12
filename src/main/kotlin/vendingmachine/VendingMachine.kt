@@ -6,7 +6,7 @@ class VendingMachine(private val _amount: Int) {
     val amount: Int
         get() = _amount
 
-    private val _coins: MutableMap<Coin, Int> = generateCoins()
+    private val _coins: MutableMap<Coin, Int> = generateCoins(_amount)
     val coins: Map<Coin, Int>
         get() = _coins.toMap()
 
@@ -24,9 +24,9 @@ class VendingMachine(private val _amount: Int) {
         // TODO add max amount
     }
 
-    private fun generateCoins(): MutableMap<Coin, Int> {
+    private fun generateCoins(money: Int): MutableMap<Coin, Int> {
         val coins = mutableMapOf(Coin.COIN_500 to 0, Coin.COIN_100 to 0, Coin.COIN_50 to 0, Coin.COIN_10 to 0)
-        var remaining = _amount
+        var remaining = money
         while (remaining >= 10) {
             val num = Randoms.pickNumberInList(listOf(500, 100, 50, 10))
             if (remaining >= num) {
@@ -65,17 +65,37 @@ class VendingMachine(private val _amount: Int) {
     }
 
     fun purchaseProduct(productName: String) {
+        if (isNotAbleToBuy()) {
+            returnChange(budget)
+            throw IllegalStateException()
+        }
         val index = searchProduct(productName)
         if (_budget - _products[index].price >= 0) {
             _budget -= _products[index].price
             _products[index].decreaseQuantity()
         }
         else
-            returnChange()
+            returnChange(budget)
     }
 
-    private fun returnChange() {
+    private fun isNotAbleToBuy(): Boolean {
+        for (i in 0 until _products.size) {
+            if (_products[i].price <= _budget) {
+                return false
+            }
+        }
+        for (i in 0 until _products.size) {
+            if (_products[i].quantity > 0) {
+                return false
+            }
+        }
+        return true
+    }
 
+    private fun returnChange(money: Int): Map<Coin, Int> {
+        val change: MutableMap<Coin, Int> = mutableMapOf()
+        //
+        return change
     }
 
 
