@@ -12,6 +12,7 @@ class VendingMachineController {
     fun run() {
         val change = getInitialChange()
         val coinsInVendingMachine = getChangeCoins(change)
+        OutputView().displayInitialCoins(coinsInVendingMachine)
         
         val products = getProducts()
         val minimumCost = getMinimumCost(products)
@@ -19,7 +20,8 @@ class VendingMachineController {
         val totalInitialAmount = getInitialAmount()
         val remainder = generateVendingMachine(products, totalInitialAmount, minimumCost)
 
-        OutputView().displayInitialCoins(coinsInVendingMachine)
+        val finalChange = returnChange(remainder, coinsInVendingMachine)
+        OutputView().displayCoinChanges(finalChange)
     }
 
     fun getInitialChange(): Int {
@@ -97,26 +99,29 @@ class VendingMachineController {
         return currentAmount
     }
 
-    // fun returnChange(remainder: Int, coinsInVendingMachine: List<Coin>) List<Coin>{
-    //     var currentRemainder = remainder
-    //     var remainingCoins = coinsInVendingMachine.toMutableList()
-    //     val coins = mutableListOf<Coin>()
+    fun returnChange(remainder: Int, coinsInVendingMachine: List<Change>): List<Change>{
+        var currentRemainder = remainder
+        val returningChange = mutableListOf<Change>()
 
-    //     while (currentRemainder > 0 || remainingCoins.size == 0) {
-    //         remainingCoins.filterNot {it.amount > currentRemainder}
-    //     }
-    //     // for (coin in Coin.values()){
-    //     //     if (currentRemainder < 10) return currentRemainder
+        for (it in coinsInVendingMachine) {
+            val amount = it.getCoin().amount
+            if(amount > currentRemainder || it.getCount() == 0) continue
+            
+            val neededCoinCount = ( currentRemainder / amount )
+            val possibleCoinCount = it.getCount()
+            
+            if(possibleCoinCount > neededCoinCount) {
+                currentRemainder -= ( neededCoinCount * amount )
+                returningChange.add(Change(Coin.from(amount), neededCoinCount))
+            } else {
+                currentRemainder -= ( possibleCoinCount * amount )
+                returningChange.add(Change(Coin.from(amount), possibleCoinCount))
+            }
 
-    //     //     val neededCoinCount = ( currentRemainder / coin.amount )
-    //     //     val possibleCoinCount = coins.count { coin == it }
+        }
 
-    //     //     currentRemainder = currentRemainder - (possibleCoinCount * coin.amount)
-    //     //     coins.add(Coin.from(amount))
-    //     // }
-
-    //     return coins.toList()
-    // }
+        return returningChange.toList()
+    }
 
     fun getMinimumCost(products: List<Product>) : Int {
         return products.minOf { it.getCost() }
