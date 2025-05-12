@@ -4,7 +4,7 @@ Implement a vending machine that returns change using the fewest number of coins
 
 ## Feature List
 
-1. Validate amount the vending machine holdd.
+1. Validate amount the vending machine hold.
 2. Generate randomly coins in the vendor machine.
 3. Add and validate products to the machine by specifying the product name, price, and quantity. Product prices start at 100 KRW and must be divisible by 10.
    Product name, price, and quantity are entered as comma-separated values. Each product is wrapped in square brackets, and multiple products are separated by semicolons:

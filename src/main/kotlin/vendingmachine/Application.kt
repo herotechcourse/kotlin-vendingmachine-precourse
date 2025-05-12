@@ -1,5 +1,9 @@
 package vendingmachine
 
+import vendingmachine.utils.InputView
+
 fun main() {
-    // TODO: Implement the program
+
+    val machineAmountHold = InputView.readVendorMachineMoney()
+    println(machineAmountHold)
 }
