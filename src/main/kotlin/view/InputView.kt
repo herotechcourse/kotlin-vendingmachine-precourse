@@ -13,6 +13,11 @@ object InputView {
             Parser.listOfProduct(Console.readLine())
         }
 
+    fun readAmount(): Int =
+        retry("Please enter the amount of money:") {
+            Parser.readMoneyAmount(Console.readLine())
+        }
+
     private inline fun <T> retry(prompt: String, block: () -> T): T {
         while (true) {
             try {

@@ -13,4 +13,10 @@ object Parser {
                     .onEach { require(it.isNotEmpty()) { "Product is empty" } }
                     .map { it.trim().removeSurrounding("[", "]") }.onEach { println(it) }
     }
+
+    fun readMoneyAmount(input: String): Int {
+        val amount = input.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Amount must be numeric")
+        require(amount > 0) { "[ERROR] Amount must be positive number" }
+        return amount
+    }
 }
