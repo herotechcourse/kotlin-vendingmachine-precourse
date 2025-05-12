@@ -16,12 +16,12 @@ Coins are generated randomly and users can add and purchase products to/from the
 `[ERROR]: {error message}`
 
 #### Output
-- [ ] display the randomly generated coins in the vending machine in the following format:
+- [x] display the randomly generated coins in the vending machine in the following format:
 `  500 KRW - 0
   100 KRW - 3
   50 KRW - 1
   10 KRW - 10`
-- [ ] display the inserted amount
+- [x] display the inserted amount
 - [ ] display the change returned in the following format:
 `  Change returned:
   100 KRW - 3
@@ -33,7 +33,7 @@ Coins are generated randomly and users can add and purchase products to/from the
 
 ### Business Logic
 #### Validates Input
-- [ ] If the user inputs invalid data, the program must throw an `IllegalArgumentException` and re-prompt input from that step.
+- [x] If the user inputs invalid data, the program must throw an `IllegalArgumentException` and re-prompt input from that step.
 
 #### Vending Machine
 - [ ]  Implement a vending machine that returns change using the fewest number of coins possible
@@ -53,9 +53,9 @@ Coins are generated randomly and users can add and purchase products to/from the
   - [ ]  ? max amount of products?
 
 #### Purchase and Returning Change
-- [ ]  Users can purchase products using the amount they have inserted.
-- [ ]  program re-prompts until money is more or equal to the cheapest
-- [ ]  If the remaining balance is less than the price of the cheapest available product, or if all products are sold out, the machine immediately returns change.
+- [x]  Users can purchase products using the amount they have inserted.
+- [x]  program re-prompts until money is more or equal to the cheapest
+- [x]  If the remaining balance is less than the price of the cheapest available product, or if all products are sold out, the machine immediately returns change.
 - [ ]  If the machine cannot return the full amount in change, it returns as much as it can, using available coins.
   - [ ]  Any unreturned balance remains in the vending machine.
   - [ ]  ?output message if balance is 0 and no change is needed?
