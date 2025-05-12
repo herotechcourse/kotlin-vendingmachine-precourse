@@ -35,7 +35,7 @@ Coins in the vending machine:
 - [x] [4] print header "Inserted amount: `$amount` KRW" each section
 - [x] [5] run "Please enter the name of the product to purchase:"
   - till reach -- remaining balance is less than the price of the cheapest available product....
-- [ ] [6] the machine immediately returns change
+- [x] [6] the machine immediately returns change
   - If the remaining balance is less than the price of the cheapest available product
   - if all products are sold out
 
