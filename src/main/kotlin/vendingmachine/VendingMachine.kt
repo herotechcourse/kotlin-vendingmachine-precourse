@@ -10,6 +10,14 @@ class VendingMachine(private val _amount: Int) {
     val coins: Map<Coin, Int>
         get() = _coins.toMap()
 
+    private var _products: MutableList<Product> = mutableListOf()
+    val products: List<Product>
+        get() = _products.toList()
+
+    private var _budget: Int = 0
+    val budget: Int
+        get() = _budget
+
     init {
         require(amount % 10 == 0) { "[ERROR]: amount has to be divisible by 10" }
         require(amount > 0) { "[ERROR]: amount has to be bigger than 0" }
@@ -33,6 +41,18 @@ class VendingMachine(private val _amount: Int) {
             }
         }
         return coins
+    }
+
+    fun addProduct(product: Product) {
+        for (elem in _products) {
+            if (product.productName == elem.productName)
+                throw IllegalArgumentException("[ERROR]: product already exists")
+        }
+        _products.add(product)
+    }
+
+    fun initBudget(money: Int) {
+        _budget = money
     }
 
 }
