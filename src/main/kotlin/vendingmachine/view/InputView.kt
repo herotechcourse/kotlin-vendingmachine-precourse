@@ -34,6 +34,15 @@ object InputView{
         return products
     }
 
+    fun enterPurchasingItem(currentAmount: Int): String {
+        println("Inserted amount: ${currentAmount} KRW")
+        println("Please enter the name of the product to purchase:")
+        
+        val productName = Console.readLine().trim()
+
+        return productName
+    }
+
     fun parseInputBySemicolon(input: String): List<String> {
         val products = input.split(";").map { it.trim() }
         // require(products.distinct().size == products.size) { "Member products must be unique." }

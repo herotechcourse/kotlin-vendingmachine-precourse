@@ -13,10 +13,13 @@ class VendingMachineController {
         val coinsInVendingMachine = getChangeCoins(change)
         
         val products = getProducts()
+        val minimumCost = getMinimumCost(products)
 
-        var totalAmount = getInitialAmount()
-        OutputView().displayCoinChanges(coinsInVendingMachine)
-        OutputView().displayProducts(products)
+        val totalInitialAmount = getInitialAmount()
+        val remaining = generateVendingMachine(products, totalInitialAmount, minimumCost)
+
+        OutputView().displayInt(remaining)
+        // OutputView().displayProducts(products)
     }
 
     fun getInitialChange(): Int {
@@ -72,5 +75,24 @@ class VendingMachineController {
         val product = Product( productName, productCost, productQuantities )
 
         return product;
+    }
+
+    fun generateVendingMachine(products: List<Product>, totalAmount: Int, minimumCost: Int): Int {
+        var currentAmount = totalAmount
+        
+        while (currentAmount > minimumCost) {
+            val productName = InputView.enterPurchasingItem(currentAmount)
+
+            val product = products.first { it.getName() == productName }
+
+            if( currentAmount > product.getCost() ) 
+                currentAmount -= product.getCost() //TODO: add exceptions
+        }
+
+        return currentAmount
+    }
+
+    fun getMinimumCost(products: List<Product>) : Int {
+        return products.minOf { it.getCost() }
     }
 }

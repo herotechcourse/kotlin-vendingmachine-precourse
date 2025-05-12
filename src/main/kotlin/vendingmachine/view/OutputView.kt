@@ -1,6 +1,7 @@
 package vendingmachine.view
 
 import vendingmachine.Coin
+import vendingmachine.model.Product
 
 class OutputView {
 
@@ -15,6 +16,16 @@ class OutputView {
         println("100 KRW - ${coins.count { it == Coin.COIN_100 }}")
         println("50 KRW - ${coins.count { it == Coin.COIN_50 }}")
         println("10 KRW - ${coins.count { it == Coin.COIN_10 }}")
+    }
+
+    fun displayProducts(products: List<Product>) {
+        println("Products: ")
+
+        products.forEach{
+            println("name : ${it.getName()}")
+            println("cost : ${it.getCost()}")
+            println("quantities : ${it.getQuantities()}")
+        }   
     }
 
 }
