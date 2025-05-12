@@ -1,5 +1,6 @@
 package vendingmachine.controller
 
+import vendingmachine.Coin
 import vendingmachine.model.CoinsGenerator
 import vendingmachine.model.Product
 import vendingmachine.view.InputView
@@ -23,6 +24,7 @@ class VendingMachine {
 
         purchaseProduct(products)
 
+        calculateChangereturn(machineBalance)
     }
 
     fun purchaseProduct(products: MutableList<Product>) {
@@ -37,6 +39,20 @@ class VendingMachine {
             this.purchaseAmount -= product[0].price
             product[0].quantity--
         }
+    }
+
+    fun calculateChangereturn(machineBalance: MutableMap<Coin, Int>) {
+
+        val coin500 : Int = machineBalance.getValue(Coin.COIN_500)
+        val coin100 : Int = machineBalance.getValue(Coin.COIN_100)
+        val coin50 : Int = machineBalance.getValue(Coin.COIN_50)
+        val coin10 : Int = machineBalance.getValue(Coin.COIN_10)
+
+
+    }
+
+    fun unableToReturn(): Int {
+        return purchaseAmount - balance
     }
 
 }
