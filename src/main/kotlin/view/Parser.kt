@@ -19,4 +19,10 @@ object Parser {
         require(amount > 0) { "[ERROR] Amount must be positive number" }
         return amount
     }
+
+    fun readPurchaseProduct(input: String): String {
+        require(input.isNotEmpty()) { "[ERROR] Input is empty" }
+        require(input.isBlank()) { "[ERROR] Input is blank" }
+        return input
+    }
 }
