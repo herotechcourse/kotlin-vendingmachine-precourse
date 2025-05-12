@@ -8,7 +8,7 @@ object InputView {
         return Console.readLine()
     }
 
-    private fun validateInputNotEmpty(input: String?) {
+    private fun validateUserInputNotEmpty(input: String?) {
         if (input.isNullOrBlank()) {
             throw IllegalArgumentException("[ERROR] Input can not be empty.")
         }
@@ -31,14 +31,14 @@ object InputView {
     private fun readPurchase(): String {
         println("Please enter the name of the product to purchase:")
         val input = readInput()
-        validateInputNotEmpty(input)
+        validateUserInputNotEmpty(input)
         return input
     }
 
     private fun readBalanceAmount(): Int {
         println("Please enter the amount of money:")
         val input = readInput()
-        validateInputNotEmpty(input)
+        validateUserInputNotEmpty(input)
         val amount = tryToInt(input)
         validateDivisibleByTen(amount)
         return amount
@@ -47,7 +47,7 @@ object InputView {
     private fun readAndValidateChangeInventory(): Int {
         println("Enter the amount the vending machine holds:")
         val input = readInput()
-        validateInputNotEmpty(input)
+        validateUserInputNotEmpty(input)
         val amount = tryToInt(input)
         validateDivisibleByTen(amount)
         return amount
@@ -94,7 +94,7 @@ object InputView {
     private fun readAndValidateProducts(): List<Product> {
         println("Enter product names, prices, and quantities:")
         val input = readInput()
-        validateInputNotEmpty(input)
+        validateUserInputNotEmpty(input)
         val products = tryToProducts(input)
         validatePrices(products)
         return products
@@ -129,5 +129,4 @@ object InputView {
             }
         }
     }
-
 }
