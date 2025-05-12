@@ -10,9 +10,7 @@ data class ExchangedCoin(val coin: Coin, var count: Int, val remaining: Int) {
         }
         return coinType * count
     }
-
 }
-
 
 
 enum class Coin(val amount: Int) {
