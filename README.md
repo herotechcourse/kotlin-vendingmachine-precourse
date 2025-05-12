@@ -15,7 +15,7 @@
 - [ ] behavior : generateCoinBalance
   - function to use: Randoms.pickNumberInList() from camp.nextstep.edu.missionutils.Randoms.
   - prohibited: no additional coins beyond given CoinBalance
-- [ ] output : displayCoinBalance
+- [x] output : displayCoinBalance
 ```
 500 KRW - 0
 100 KRW - 3

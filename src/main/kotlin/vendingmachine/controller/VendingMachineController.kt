@@ -4,6 +4,7 @@ import vendingmachine.view.InputView
 import vendingmachine.view.OutputView
 import vendingmachine.VendingMachine
 import vendingmachine.domain.CoinBalanceGenerator
+import vendingmachine.domain.CoinBalance
 
 class VendingMachineController (
     private val inputView: InputView,
@@ -11,9 +12,11 @@ class VendingMachineController (
 ){
     fun run() {
         val vendingMachine = createVendingMachine()
-        val generator = CoinBalanceGenerator().balance
-        outputView.displayBalanceCoin(generator)
+        val balance = CoinBalance(vendingMachine.balanceCoinSum).balance
+        val generatorSecond = CoinBalanceGenerator(vendingMachine.balanceCoinSum, balance)
 
+        generatorSecond.generateCoinBalance()
+        outputView.displayBalanceCoin(balance)
     }
 
     private fun createVendingMachine(): VendingMachine{
@@ -25,7 +28,6 @@ class VendingMachineController (
                 outputView.displayError(e.message)
             }
         }
-
     }
 
 }
