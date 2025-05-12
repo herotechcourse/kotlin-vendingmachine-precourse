@@ -15,12 +15,12 @@ class VendingMachine(val balance: Balance, private val products: List<String>) {
         }
     }
 
-    fun canProceedOrder(): Boolean {
-
-        val cheapest = store.keys.filter {  }
-    }
-
-    private fun minPrice(): Int {
-        var min = 0
-    }
+//    fun canProceedOrder(): Boolean {
+//
+//        val cheapest = store.keys.filter {  }
+//    }
+//
+//    private fun minPrice(): Int {
+//        var min = 0
+//    }
 }

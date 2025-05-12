@@ -11,9 +11,9 @@ fun main() {
     val balance = Balance(InputView.readAmount(), coins)
     val machine = VendingMachine(balance, products)
     OutputView.insertedAmount(balance.remaining)
-    while (canProceedOrder()) {
-        val orderedProduct = InputView.purchaseProduct()
-
-    }
+//    while (canProceedOrder()) {
+//        val orderedProduct = InputView.purchaseProduct()
+//
+//    }
 }
 
