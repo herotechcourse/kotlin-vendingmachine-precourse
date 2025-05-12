@@ -84,9 +84,8 @@ object InputView {
         return (purchaseString)
     }
 
-    private fun validatePurchaseOfProduct(inventory: mutableMapOf<Product, Int>, purchaseString : String) : Boolean {
-        //validate if that is an existing product
-        //return true or false
+    private fun validatePurchaseOfProduct(inventory: MutableMap<Product, Int>, purchaseString : String) : Boolean {
+        inventory.
     }
 
     fun handlePurchaseOfProduct(inventory : mutableMapOf<Product, Int>) {
