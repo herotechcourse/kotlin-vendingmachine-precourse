@@ -3,10 +3,14 @@ package vendingmachine
 fun main() {
     // TODO: Implement the program
     val inputView = InputView()
+    val outputView = OutputView()
     val validator = Validator()
+    val coinGenerator = CoinGenerator()
 
     val coinAmount = readAndValidateCoinAmount(inputView, validator)
-    println(coinAmount)
+    var coinsAvailable = coinGenerator.calculateNumberOfCoins(coinAmount)
+    outputView.printCoinsAvailable(coinsAvailable)
+
 
 }
 
