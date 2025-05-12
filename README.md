@@ -3,13 +3,13 @@
 ## Plan features
 
 - **User Input**
-	- [ ] Prompt for Coins held by the vending machine
-	- [ ] Prompt product names, prices, and quantities
-	- [ ] Prompt the amount of money (total sum for the purchase)
-	- [ ] Prompt product to purchase (one type of product per prompt)
+	- [x] Prompt for Coins held by the vending machine
+	- [x] Prompt product names, prices, and quantities
+	- [x] Prompt the amount of money (total sum for the purchase)
+	- [x] Prompt product to purchase (one type of product per prompt)
 
 - **Input Validation**
-    - [ ] Validate Coins held
+    - [x] Validate Coins held
     - [ ] Validate Product (names, prices, and quantities)
     - [ ] Validate Client money
     - [ ] Validate product purchase
