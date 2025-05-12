@@ -73,5 +73,29 @@ object InputView {
         return productsList
     }
 
+    fun readUserAmountOfMoney(): Int {
+        while (true) {
+            try {
+                println("Please enter the amount of money:")
+                val amount = Console.readLine()?: throw IllegalArgumentException("Input cannot be empty")
+                return parseUserAmountOfMoney(amount)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+
+        }
+
+    }
+
+    private fun parseUserAmountOfMoney(
+        amount: String
+    ): Int {
+        val userMoney = amount.toIntOrNull() ?: throw IllegalArgumentException("[Error] Input must be a valid positive number")
+        require(userMoney > 0) { "[Error] Number of rounds must be positive" }
+        require(userMoney % 10 == 0) {"[Error] Amount must be divisible by 10"}
+        return userMoney
+    }
+
+
 
 }
