@@ -12,7 +12,6 @@ class CoinsGenerator (val amount: Int){
             val amount = Randoms.pickNumberInList(listOf(500, 100, 50, 10))
             if (remaining >= amount) {
                 remaining -= amount
-                println(amount)
                 possibleCoins.add(amount)
             }
         }
