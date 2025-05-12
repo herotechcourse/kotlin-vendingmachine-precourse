@@ -6,9 +6,9 @@ class OutputView {
     /**
      * Prints the purchased tickets.
      */
-    fun printTickets(tickets: List<List<Int>>) {
-        println("You have purchased ${tickets.size} tickets.")
-        tickets.forEach { println(it) }
+    fun printCoins(conins: List<List<Int>>) {
+        println("Coins in the vending machine:")
+        coins.forEach { println(it) }
         println()
     }
 

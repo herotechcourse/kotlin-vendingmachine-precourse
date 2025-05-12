@@ -18,7 +18,15 @@ class Application {
     fun main() {
         val inputView = InputView()
         val amount = promptAmount(inputView)
-        println(amount)
+        //println(amount)
+
+        val coin = Coin(amount)
+        val coninsInVendingMachine = coin.generate(amount)
+
+        val outputView = OutputView()
+        outputView.pintCoinsconinsInVendingMachine
+
+
 
         // hard-coded winning numbers and bonus ball for testing
         println("Coins in the vending machine:")
@@ -26,9 +34,20 @@ class Application {
         println("100 KRW - 4")
         println("50 KRW -1")
         println("10 KRW - 0")
-        println("5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets")
+
+        println("Enter product names, prices, and quantities:")
+        println("[Cola,1500,20];[Soda,1000,10]")
+
+        println("Please enter the amount of money:")
+        println("3000")
         println("Inserted amount: 3000 KRW")
+        println("Please enter the name of the product to purchase:")
+        println("Cola")
         println("Inserted amount: 1500 KRW")
+        println("Please enter the name of the product to purchase:")
+        println("Soda")
+        //println("Soda")
+
     }
 
     private fun promptAmount(inputView: InputView): Int {
