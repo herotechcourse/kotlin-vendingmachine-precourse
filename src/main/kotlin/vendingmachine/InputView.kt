@@ -4,8 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputView {
 
-    fun readMoneyAmountMachineHold():Int {
-        println("Enter the amount the vending machine holds:")
+    fun readMoneyAmount():Int {
         return Console.readLine()
             .trim()
             .toIntOrNull()?.takeIf { it > 0 && it % 10 == 0}
@@ -14,7 +13,6 @@ object InputView {
 
     //  [Cola,1500,20];[Soda,1000,10]
     fun readProductInfo(): List<Product> {
-        println("Enter product names, prices, and quantities:")
         val userInput = Console.readLine()
             .trim()
             .split(";")
@@ -40,4 +38,5 @@ object InputView {
         }
         return products
     }
+
 }
