@@ -96,6 +96,28 @@ object InputView {
         return userMoney
     }
 
+    fun readNameProductWanted(availableProducts: List<Product>): String {
+        while (true) {
+            try {
+                println("Please enter the name of the product to purchase:")
+                val input = Console.readLine()?: throw IllegalArgumentException("Input cannot be empty")
+                return parseNameProductWanted(input, availableProducts)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
 
+        }
+    }
+
+    private fun parseNameProductWanted(
+        input: String,
+        availableProducts: List<Product>
+    ): String {
+        val name = input.trim()
+
+        require(availableProducts.map { it.name.lowercase() }.contains(input.lowercase())) {"[ERROR] Product $input not available"}
+
+        return name
+    }
 
 }
