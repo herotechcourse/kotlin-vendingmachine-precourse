@@ -1,1 +1,41 @@
 # kotlin-vendingmachine-precourse
+
+## Feature List
+
+- InputView
+  - [x] take amount of money to initialize machine hold
+    - [x] divisible by 10
+  - [x] take product info to initialize machine
+    - [x] format: `[name,price,quantity];[name2,price2,quantity]`
+  - [x] take the amount of money from user
+  - [x] take name of product to purchase
+- OutputView
+  - [x] display holding coins
+  - [x] display remaining amount of money for user
+  - [ ] display change to be returned
+  - [ ] if needed, display amount of change unable to return
+- Machine
+  - initiation
+    - [x] generating amounts of coin randomly
+      - [x] No additional coins created
+  - order processing
+    - [x] process purchasing order from user
+  - return condition
+    - [x] if the remaining balance is less than the price of the cheapest available product
+    - [x] if all products are sold out
+  - returning change
+    - [ ] use the fewest number of coins
+      - [ ] calculate fewest solution to return change
+    - [ ] if cannot return the full amount
+      - [ ] return as much as possible
+      - [ ] display amount that unreturned
+- Product
+  - name
+  - price
+    - [x] start at 100 KRW
+    - [x] must be divisible by 10
+  - quantity
+- Exception
+  - [ ] error message starts with "[ERROR]"
+  - allowed: `IllegalArgumentException` or `IllegalStateException`
+  - no generic `Exception`
