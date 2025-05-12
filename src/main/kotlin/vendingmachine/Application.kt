@@ -1,5 +1,6 @@
 package vendingmachine
 
+import view.InputView.getBalanceAmount
 import view.InputView.getChangeInventory
 import view.InputView.getProducts
 import view.OutputView
@@ -27,4 +28,7 @@ fun main() {
 
     val products = getProducts()
 //    println(products)
+
+    val balance = getBalanceAmount()
+    println("Inserted amount: $balance KRW")
 }

@@ -29,6 +29,15 @@ object InputView {
         }
     }
 
+    private fun readBalanceAmount(): Int {
+        println("Please enter the amount of money:")
+        val input = readInput()
+        validateInputNotEmpty(input)
+        val amount = tryToInt(input)
+        validateDivisibleByTen(amount)
+        return amount
+    }
+
     private fun readAndValidateChangeInventory(): Int {
         println("Enter the amount the vending machine holds:")
         val input = readInput()
@@ -90,6 +99,16 @@ object InputView {
         while (true) {
             try {
                 return readAndValidateProducts()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
+
+    fun getBalanceAmount(): Int {
+        while (true) {
+            try {
+                return readBalanceAmount()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }

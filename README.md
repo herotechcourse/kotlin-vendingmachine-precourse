@@ -17,10 +17,10 @@ The features will be implemented in the following order:
 - [x] read product names, prices, and quantities from user input
   - [x] validate product prices
     - [x] product prices start at 100 KRW 
-    - [x] product prices must be divisible by 10 (assumption)
+    - [x] product prices must be divisible by 10
 
-- [ ] read amount of money from user input
-- [ ] print inserted amount
+- [x] read balance amount of money from user input
+- [x] print inserted balance amount
 
 - [ ] read product to purchase from user input
   - [ ] validate that product exists
