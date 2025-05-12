@@ -30,8 +30,6 @@ object VendingMachineSetting {
         //Please enter the name of the product to purchase:
         InputView.buyProduct()
 
-        // output example Cola
-
         //output Inserted amount: 1500 KRW
 
 
