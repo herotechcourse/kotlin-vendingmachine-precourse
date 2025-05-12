@@ -12,20 +12,22 @@ object InputView {
             ?: throw IllegalArgumentException("[ERROR] Input must be a positive number divisible by 10.")
     }
 
+    //  [Cola,1500,20];[Soda,1000,10]
     fun readProductInfo(): List<Product> {
         println("Enter product names, prices, and quantities:")
         val userInput = Console.readLine()
             .trim()
             .split(";")
         require(userInput.isNotEmpty()) { "[ERROR] Invalid input." }
-        userInput.forEach { product ->
+        val parsed = userInput.map { product ->
             if (product.startsWith("[") && product.endsWith("]")) {
-                product.dropLast(0)
-                product.drop(0)
+                product.trim('[').trim(']')
             }
-            throw IllegalArgumentException("[ERROR] Invalid Input.")
+            else {
+                throw IllegalArgumentException("[ERROR] Invalid Input.")
+            }
         }
-        val products = userInput.map { product ->
+        val products = parsed.map { product ->
             val productInfo = product.split(",")
             val productName = productInfo[0]
             val productPrice = productInfo[1]
