@@ -1,5 +1,9 @@
 package vendingmachine
 
+import camp.nextstep.edu.missionutils.Console
+
 fun main() {
-    // TODO: Implement the program
+//    val vendingMachineAmount =  InputView.readValidVendingMachineAmount()
+    val products = InputView.readValidProducts()
+    println(products)
 }
