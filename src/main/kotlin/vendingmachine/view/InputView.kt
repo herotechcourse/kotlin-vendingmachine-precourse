@@ -14,24 +14,24 @@ object InputView{
         return amount
     }
 
-    // fun enterRestrictedItem(name: String): List<String> {
-    //     println("Enter ${name}'s restricted Item:")
+    fun enterProducts(): List<String> {
+        println("Enter product names, prices, and quantities:")
         
-    //     val input = Console.readLine().trim()
-    //     // require(input.isNotBlank()) { "Input must be entered" }
+        val input = Console.readLine().trim()
+        // require(input.isNotBlank()) { "Input must be entered" }
         
-    //     val restrictedItems = parseInputByComma(input)
-    //     return restrictedItems
-    // }
+        val products = parseInputBySemicolon(input)
+        return products
+    }
 
-    // fun parseInputByComma(input: String): List<String> {
-    //     val names = input.split(",").map { it.trim() }
-    //     // require(names.distinct().size == names.size) { "Member names must be unique." }
-    //     // require(names.all { it.matches(Regex("^[A-Za-z_]{1,5}$")) }) { 
-    //     //     "Member names must contain only letters or underscores and be 1 to 5 characters long." 
-    //     // }
+    fun parseInputBySemicolon(input: String): List<String> {
+        val products = input.split(";").map { it.trim() }
+        // require(products.distinct().size == products.size) { "Member products must be unique." }
+        // require(products.all { it.matches(Regex("^[A-Za-z_]{1,5}$")) }) { 
+        //     "Member products must contain only letters or underscores and be 1 to 5 characters long." 
+        // }
         
-    //     return names;
-    // }
+        return products;
+    }
 
 }
