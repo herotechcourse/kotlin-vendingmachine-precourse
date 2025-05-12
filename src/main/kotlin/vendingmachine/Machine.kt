@@ -53,4 +53,8 @@ class Machine(private val amountHolding: Int) {
         _remaining -= targetProduct.price
         targetProduct.reduceQuantityOne()
     }
+
+    fun isAnyAvailable(): Boolean = products.sumOf { it.getQuantity() } > 0
+
+    fun isOneAvailable(product: Product) {}
 }
