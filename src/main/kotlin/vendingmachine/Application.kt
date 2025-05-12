@@ -1,25 +1,22 @@
 package vendingmachine
 
-import camp.nextstep.edu.missionutils.Console
-import camp.nextstep.edu.missionutils.Randoms
-
 fun main() {
     val vendingMachine = VendingMachine()
 
-//    val vendingMachineAmount =  InputView.readValidVendingMachineAmount()
-    val vendingMachineAmount = 450
+    val vendingMachineAmount = InputView.readValidVendingMachineAmount()
+
     vendingMachine.generateCoins(vendingMachineAmount)
-    OutputView.printGeneratedCoins(vendingMachine.resultMap)
+    OutputView.printGeneratedCoins(vendingMachine.coinsMap)
 
-//    val products = InputView.readValidProducts()
-    val parsedProducts = InputValidator.parseProducts("[Cola,1500,20];[Soda,1000,10];[Chips,500,50]")
-    val products = Product(parsedProducts)
-    products.showProducts()
+    val products = Product(InputView.readValidProducts())
 
-//    vendingMachine.setUserBalance(InputView.readValidPurchaseAmount())
-    vendingMachine.setBalance(1550)
+    vendingMachine.setBalance(InputView.readValidPurchaseAmount())
 
     val purchase = Purchase(products, vendingMachine)
-
     purchase.startPurchase()
+
+    vendingMachine.generateChange()
+
+    OutputView.printChangeCoins(vendingMachine.coinsChange)
+    OutputView.printUnableToReturn(vendingMachine.userBalance)
 }
