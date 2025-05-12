@@ -84,8 +84,11 @@ object InputView {
         return (purchaseString)
     }
 
-    private fun validatePurchaseOfProduct(inventory: MutableMap<Product, Int>, purchaseString : String) : Boolean {
-        inventory.
+    private fun validatePurchaseOfProduct(inventory: MutableMap<String, Int>, purchaseString : String) : Boolean {
+        if (inventory.containsKey(purchaseString)) {
+            return true
+        }
+        return false
     }
 
     fun handlePurchaseOfProduct(inventory : mutableMapOf<Product, Int>) {
