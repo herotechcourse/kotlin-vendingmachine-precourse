@@ -22,7 +22,7 @@
 - [✅] : Clone repository (forked project)
 - [✅] : Verify that project runs properly `./gradlew clean test`
 - [✅] : Setup basic folder and package structure
-- [ ] : Make the initial commit<br>
+- [✅] : Make the initial commit<br>
         `chore(project): initialize project with basic structure`
             OR
          'chore(project): verify gradle test env runs'
@@ -33,7 +33,94 @@
 
 ## (2) Execution Flow
 ```
-T.B.D.
+Output (1)
+    Enter the amount the vending machine holds:
+
+Input (1)-1
+    450 // Amount of money from user
+    
+        Validate(1)-1
+
+Output (2)
+    \nCoins in the vending machine:
+
+Random generate coins in the vending machine. (= generatedCoins)
+    Format:
+        500 KRW - 0
+        100 KRW - 3
+        50 KRW - 1
+        10 KRW - 10        
+
+Output (3): Show results
+    'generatedCoins' (with over format)
+
+Output (4)
+    \nEnter product names, prices, and quantities:
+
+Input (4)-1
+    [Cola,1500,20];[Soda,1000,10] // Item, Price, Quantity
+    
+        Validate(4)-1
+        1. Possible to divide by 10
+        2. Min. price of product: 100 
+
+Output (5)
+    \bPlease enter the amount of money:
+    
+Input (5)-1
+    3000 // Amount of wish purchase money (= purchasedMoney)
+
+(Loop)
+    [ Result - combine later in refactoring ]
+    {
+        Output (6)
+            \nInserted amount: 3000 KRW (= purchasedMoney)
+
+        Output (7)
+            Please enter the name of the product to purchase:
+
+        Input (7)-1
+            Cola (Wish product from User)
+            
+                Validate(7) - 1
+                1. Check that type of product exist in vending machine
+                2. If it doesn't exists -> Error
+                 
+            Calculate
+            1. InsertedAmount - product price = leftAmount
+            2. if it isn't available to purchase product more,
+                cause 'leftAmount' is not enought to buy left product
+                than return (= changedAmount with below format)
+                
+                    Format:
+                        100 KRW - 3
+                        50 KRW - 1
+                        10 KRW - 10
+
+                    Output (8)
+                        Change returned:
+                        // changedAmount with below format
+                
+                1. Compare leftAmount & Minimum productPrice
+                2. Check quantity of all product, whether it's 0.
+
+            3. else
+                Still enought to purchase more items.
+                    -> repeat loop.
+    }
+
+If impossible case to return the change
+    Output (9)
+        \nUnable to return: 50 KRW (as much as amount of unavilalbe to change)
+        
+        ex) Vending machine has only 450KRW coins.
+            But return change amount is 500KRW -> Then can't return 50.
+
+
+
+
+
+
 main()
 ├── Ask input(1) (e.g., names)
 ├── Get input
