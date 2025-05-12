@@ -9,8 +9,8 @@ The `Input Validator` object handles all user input validation. It ensures that 
 The vending machine takes the user's inserted amount of money and issues the specified product. After the purchase it gives back a change in the amount of the possible coins values.
 
 ### Structure
+
 #### Input Validation Object
 #### Product Class
 #### Vending Machine Class
 #### Coin Enum
-
