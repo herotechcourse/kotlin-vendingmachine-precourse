@@ -3,6 +3,9 @@ package vendingmachine
 import camp.nextstep.edu.missionutils.Randoms
 
 class Machine(private val amountHolding: Int) {
+    private var _remaining: Int = 0
+    val remaining: Int
+        get() = _remaining
 
     private var _coinBoard: MutableMap<Coin, Int> = mutableMapOf()
     val coinBoard: Map<Coin, Int>
@@ -13,6 +16,7 @@ class Machine(private val amountHolding: Int) {
         get() = _products
 
     init {
+
         Coin.entries.forEach { _coinBoard[it] = 0 }
         generateCoins()
     }
@@ -33,7 +37,15 @@ class Machine(private val amountHolding: Int) {
         _products = products.toMutableList()
     }
 
+    fun setRemaining(remaining: Int) {
+        _remaining = remaining
+    }
+
     fun getCoinInfo(coin: Coin): String {
         return "${coin.amount} KRW - ${coinBoard[coin]}"
+    }
+
+    fun getRemainingInfo(): String {
+        return "Inserted amount: $_remaining KRW"
     }
 }
