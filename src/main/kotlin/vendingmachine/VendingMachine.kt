@@ -12,7 +12,7 @@ class VendingMachine (private val initAMount: Int) {
         userBudget = InputView.handleUserBudget()
         while (userBudget >= cheapestProduct) //incorrect, it needs to be bigger than the value of the cheapest product
         {
-            val product = InputView.handlePurchaseOfProduct() //still not returning anything
+            val product = InputView.handlePurchaseOfProduct(inventory) //still not returning anything
         }
     }
 }

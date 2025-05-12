@@ -1,6 +1,7 @@
 package vendingmachine
 
 import camp.nextstep.edu.missionutils.Console
+import kotlin.collections.mutableMapOf
 
 object InputView {
     private fun getInitialAmount() : Int? {
@@ -83,14 +84,14 @@ object InputView {
         return (purchaseString)
     }
 
-    private fun validatePurchaseOfProduct(purchaseString : String) : Boolean {
+    private fun validatePurchaseOfProduct(inventory: mutableMapOf<Product, Int>, purchaseString : String) : Boolean {
         //validate if that is an existing product
         //return true or false
     }
 
-    fun handlePurchaseOfProduct() {
+    fun handlePurchaseOfProduct(inventory : mutableMapOf<Product, Int>) {
         val purchaseString = getPurchaseOfProduct()
-        val productExists = validatePurchaseOfProduct(purchaseString)
+        val productExists = validatePurchaseOfProduct(inventory, purchaseString)
         //logic
     }
 }
