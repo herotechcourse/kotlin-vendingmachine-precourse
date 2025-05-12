@@ -3,37 +3,39 @@
 ## Feature List
 
 - InputView
-  - take amount of money to initialize machine hold
-    - divisible by 10
-  - take product info to initialize machine
-    - format: `[name,price,quantity];[name2,price2,quantity]`
-  - take the amount of money from user
-  - take name of product to purchase
+  - [x] take amount of money to initialize machine hold
+    - [x] divisible by 10
+  - [x] take product info to initialize machine
+    - [x] format: `[name,price,quantity];[name2,price2,quantity]`
+  - [x] take the amount of money from user
+  - [x] take name of product to purchase
 - OutputView
-  - display holding coins
-  - display remaining amount of money for user
-  - display change to be returned
-  - if needed, display amount of change unable to return
+  - [x] display holding coins
+  - [x] display remaining amount of money for user
+  - [ ] display change to be returned
+  - [ ] if needed, display amount of change unable to return
 - Machine
   - initiation
-    - generating amounts of coin randomly
-      - No additional coins created
+    - [x] generating amounts of coin randomly
+      - [x] No additional coins created
+  - order processing
+    - [x] process purchasing order from user
   - return condition
-    - if the remaining balance is less than the price of the cheapest available product
-    - if all products are sold out
+    - [x] if the remaining balance is less than the price of the cheapest available product
+    - [x] if all products are sold out
   - returning change
-    - use the fewest number of coins
-      - calculate fewest solution to return change
-    - if cannot return the full amount
-      - return as much as possible
-      - display amount that unreturned
+    - [ ] use the fewest number of coins
+      - [ ] calculate fewest solution to return change
+    - [ ] if cannot return the full amount
+      - [ ] return as much as possible
+      - [ ] display amount that unreturned
 - Product
   - name
   - price
-    - start at 100 KRW
-    - must be divisible by 10
+    - [x] start at 100 KRW
+    - [x] must be divisible by 10
   - quantity
 - Exception
-  - error message starts with "[ERROR]"
+  - [ ] error message starts with "[ERROR]"
   - allowed: `IllegalArgumentException` or `IllegalStateException`
   - no generic `Exception`
