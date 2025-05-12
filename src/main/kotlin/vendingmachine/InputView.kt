@@ -16,7 +16,7 @@ object InputView {
         }
     }
 
-    fun productDetailsInput() {
+    fun productDetailsInput():MutableList<Product> {
         println ("\nEnter product names, prices, and quantities:")
         val input = Console.readLine()
         val allProducts = input.split(";")
@@ -27,7 +27,7 @@ object InputView {
             productList.add(Product(productDetails[0], productDetails[1].toInt(), productDetails[2].toInt()))
         }
         //println(productList[0].toString())
-        //Product price should be greater than 100 and divisible by 10
+        return productList
     }
 
     fun productPurchaseAmountInput() :Int {
@@ -45,7 +45,7 @@ object InputView {
 
     fun productPurchaseName(remainingAmount: Int): String {
         println("\nInserted amount: $remainingAmount KRW")
-        println("Please enter the name of the product to purchase:\n")
+        println("Please enter the name of the product to purchase:")
         return try {
             val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Product Name cannot be empty")
             input.removeWhiteSpaces()
