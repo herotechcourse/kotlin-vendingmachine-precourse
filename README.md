@@ -22,7 +22,7 @@ Coins in the vending machine:
 10 KRW - 10
 ```
 
-- [ ] [2] read "Enter product names, prices, and quantities:"
+- [x] [2] read "Enter product names, prices, and quantities:"
   - format like:
     - Product name, price, and quantity are entered as comma-separated values
     - Each product is wrapped in square brackets, and multiple products are separated by semicolons:
@@ -31,9 +31,9 @@ Coins in the vending machine:
 [Cola,1500,20];[Soda,1000,10]
 ```
 
-- [ ] [3] read "Please enter the amount of money:", which user cay buy product(s)
-- [ ] [4] print header "Inserted amount: `$amount` KRW" each section
-- [ ] [5] run "Please enter the name of the product to purchase:"
+- [x] [3] read "Please enter the amount of money:", which user cay buy product(s)
+- [x] [4] print header "Inserted amount: `$amount` KRW" each section
+- [x] [5] run "Please enter the name of the product to purchase:"
   - till reach -- remaining balance is less than the price of the cheapest available product....
 - [ ] [6] the machine immediately returns change
   - If the remaining balance is less than the price of the cheapest available product
