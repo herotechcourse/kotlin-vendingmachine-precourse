@@ -6,11 +6,11 @@
 
 #### step1: coin balance
 - [x] input : getCoinBalance
-- [ ] data : validateCoinBalance
+- [x] data : validateCoinBalance
   - is not empty
-  - is positive
-  - is divisible by 10 (probably)
+  - is valid digits
   - is greater than 10 (probably)
+  - is divisible by 10 (probably)
 #### step2: coin balance of vending machine
 - [ ] behavior : generateCoinBalance
   - function to use: Randoms.pickNumberInList() from camp.nextstep.edu.missionutils.Randoms.
