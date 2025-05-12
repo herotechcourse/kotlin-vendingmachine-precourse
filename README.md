@@ -1,1 +1,27 @@
 # kotlin-vendingmachine-precourse
+## Feature List
+- Input Validator
+  - Coin Repository: amount must be at least 0 and divisible by 10
+  - Product Inventory:
+    - For each product names, prices and quantities
+    - Each name must be unique
+    - Prices divisible by 10
+    - Quantities > 0
+    - Format: [product1_name,price,quantity];[product2_name,price,quantity];...
+  - Purchase Module:
+    - Enter amount: amount must be > 0 and divisible by 10
+    - Enter product name:
+      - Name must be in inventory 
+      - Current amount must be sufficient
+- Coin Repository
+  - Random initialization
+  - Only 500 KRW, 100 KRW, 50 KRW, and 10 KRW coins are used
+  - Sum equals amount entered
+- Product Inventory
+  - Register: Insert product with name, price and quantity
+  - Remove: removes n items of a product given product name
+- Purchase Module
+  - Possibility to purchase if balance is at least the price of cheapest product available and if inventory is non-empty (sum of quantities > 0)
+  - Display new amount after successful purchase
+  - If the remaining balance is less than the price of the cheapest available product or if all products are sold out, the machine immediately returns change
+    - Return as much as possible given the coin repository
