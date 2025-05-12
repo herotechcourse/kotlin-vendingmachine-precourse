@@ -1,5 +1,6 @@
 package vendingmachine
 
 fun main() {
-    // TODO: Implement the program
+    val initialAmount = InputView.initialAmountInput()
+    println(initialAmount)
 }
