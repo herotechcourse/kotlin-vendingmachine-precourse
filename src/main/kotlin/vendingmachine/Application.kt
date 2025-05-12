@@ -33,5 +33,9 @@ fun main() {
         val product = retry( {vMachine.validateProduct(InputView.readClientProduct(clientAmount.first))})
         vMachine.purchaseProduct(product)
         clientAmount = vMachine.validateUserAmount(vMachine.clientAmount)
+        if (!clientAmount.second) {
+            OutputView.displayChangeReturned(vMachine.returnChange())
+            return
+        }
     }
 }
