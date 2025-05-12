@@ -1,9 +1,17 @@
 package vendingmachine
-import vendingmachine.view.InputView
+
+import vendingmachine.service.VendingMachineSetting
+
+
 
 fun main() {
     // TODO: Implement the program
-    val amount = InputView.readCoinAmount()
-    println(amount)
+
+    try {
+        VendingMachineSetting.run()
+    } catch (e: IllegalArgumentException) {
+        throw e
+    }
+
 
 }
