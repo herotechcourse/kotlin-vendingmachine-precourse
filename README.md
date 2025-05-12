@@ -21,7 +21,7 @@ The application allows users to randomly generate coins and then add and purchas
 - The machine uses the fewest number of coins possible from its current coin inventory to return change.
 - The machine doesn't use bills to return change. 
 - If the machine is unable to return the full amount in change, it returns as much as it can, using available coins.
-- Displays the amount unable to be returned as change (if none then 0 KRW)
+- Displays the amount unable to be returned as change (if none then 0 KRW).
 - Handles invalid input (throw and re-prompt on IllegalArgumentException) with specific error messages starting with [ERROR].
 
 ---
