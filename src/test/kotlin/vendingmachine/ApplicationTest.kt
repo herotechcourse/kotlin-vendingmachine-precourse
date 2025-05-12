@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
@@ -33,8 +34,14 @@ class ApplicationTest : NsTest() {
     @Test
     fun `exception test`() {
         assertSimpleTest {
-            runException("-1")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThrows<IllegalArgumentException> { runException("-1") }
+        }  
+    }
+
+    @Test
+    fun `exception test for empty input`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("\n") }
         }
     }
 
