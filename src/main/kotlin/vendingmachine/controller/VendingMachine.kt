@@ -20,7 +20,23 @@ class VendingMachine {
         val products = inputView.inputProduct()
         //println(products[0].name + " "+ products[0].price +" " + products[0].quantity )
         purchaseAmount = inputView.inputPurchaseAmount()
-        outputView.displayInsertedAmount(purchaseAmount)
+
+        purchaseProduct(products)
 
     }
+
+    fun purchaseProduct(products: MutableList<Product>) {
+        val cheapestProduct: Int = products.minOf { it.price }
+
+        while (purchaseAmount > cheapestProduct) {
+            outputView.displayInsertedAmount(purchaseAmount)
+            val productName = inputView.inputPurchaseProduct()
+            val product: List<Product> = products.filter { it.name == productName }
+            if (product[0].quantity == 0)
+                return
+            this.purchaseAmount -= product[0].price
+            product[0].quantity--
+        }
+    }
+
 }
