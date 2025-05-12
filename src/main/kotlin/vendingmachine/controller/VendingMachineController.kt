@@ -14,6 +14,7 @@ class VendingMachineController {
         
         val products = getProducts()
 
+        var totalAmount = getInitialAmount()
         OutputView().displayCoinChanges(coinsInVendingMachine)
         OutputView().displayProducts(products)
     }
@@ -21,6 +22,12 @@ class VendingMachineController {
     fun getInitialChange(): Int {
         val change = InputView.enterInitialChange()
         return change
+    }
+
+
+    fun getInitialAmount(): Int {
+        val initialAmount = InputView.enterInitialAmount()
+        return initialAmount
     }
 
     fun getChangeCoins(change: Int): MutableList<Coin>{
@@ -57,6 +64,7 @@ class VendingMachineController {
         // require(products.all { it.matches(Regex("^[A-Za-z_]{1,5}$")) }) { 
         //     "Member products must contain only letters or underscores and be 1 to 5 characters long." 
         // }
+
         val productName = productInfo[0]
         val productCost = productInfo[1].toInt()
         val productQuantities = productInfo[2].toInt()

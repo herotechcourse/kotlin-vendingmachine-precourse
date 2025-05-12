@@ -14,6 +14,16 @@ object InputView{
         return amount
     }
 
+    fun enterInitialAmount(): Int {
+        println("Please enter the amount of money:")
+        
+        val input = Console.readLine().trim()
+        // require(input.isNotBlank()) { "Input must be entered" }
+        val amount = input.toInt() 
+        // val amount = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be a number.")
+        return amount
+    }
+
     fun enterProducts(): List<String> {
         println("Enter product names, prices, and quantities:")
         
