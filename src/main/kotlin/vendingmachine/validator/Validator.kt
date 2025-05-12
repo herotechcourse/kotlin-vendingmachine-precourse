@@ -34,7 +34,7 @@ object Validator {
     fun validatePurchaseProduct(input: String): String {
         validateNonEmpty(input, "[ERROR] Input cannot be empty.")
 
-        return parseInputBySemicolon(input)
+        return input
     }
 
 

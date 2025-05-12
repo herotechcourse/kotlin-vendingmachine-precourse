@@ -18,6 +18,7 @@ object InputView{
         println("Please enter the amount of money:")
         
         val input = Console.readLine().trim()
+
         val amount = Validator.validateInitialAmount(input)
         
         return amount
@@ -39,7 +40,4 @@ object InputView{
 
         return Validator.validatePurchaseProduct(productName)
     }
-
-
-
 }
