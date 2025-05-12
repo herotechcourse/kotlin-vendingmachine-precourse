@@ -1,6 +1,8 @@
 package vendingmachine
 
 import vendingmachine.domain.VendingMachine
+import vendingmachine.domain.Product
+
 import vendingmachine.view.InputView
 import vendingmachine.view.OutputView
 
@@ -17,11 +19,23 @@ fun main() {
     OutputView.output2()
     OutputView.output3(machineCoins.getCoins())
 
-//
+    // (3) Accept product
+    OutputView.output4()
+    // Init Product
+    val productList = mutableMapOf<String, Product>()
+    var machineProducts = InputView.input4()
+    val previousProducts = machineProducts.split(";")
+    for (previousProduct in previousProducts) {
+        val removedBracket = previousProduct.removeSurrounding("[", "]")
+        val feature = removedBracket.split(",")
+        val name = feature[0]
+        productList[name] = Product(feature)
+    }
+    println(previousProducts)
 
-//
-//    OutputView.output4()
-//    InputView.input4()
+
+
+
 //
 //    OutputView.output5()
 //    InputView.input5()
