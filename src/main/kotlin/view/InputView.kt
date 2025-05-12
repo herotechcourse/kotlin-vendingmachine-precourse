@@ -29,7 +29,7 @@ object InputView {
         }
     }
 
-    fun readPurchase(): String {
+    private fun readPurchase(): String {
         println("Please enter the name of the product to purchase:")
         val input = readInput()
         validateInputNotEmpty(input)
