@@ -3,6 +3,7 @@ package vendingmachine.model
 import vendingmachine.Coin
 import vendingmachine.exception.VendingMachineException.InvalidProductNameException
 import vendingmachine.exception.VendingMachineException.NoProductException
+import vendingmachine.exception.VendingMachineException.ExpensiveProductException
 
 class VendingMachine(private val coins: MutableList<Coin>, private val products: MutableList<Product>) {
     var clientAmount: Int = 0
@@ -21,8 +22,12 @@ class VendingMachine(private val coins: MutableList<Coin>, private val products:
     }
 
     fun purchaseProduct(name: String) {
-        if ((products.find { it.name == name }?.quantity ?: 0) <= 0) throw NoProductException()
-        val product = products.find {it.name == name} ?: throw InvalidProductNameException()
+        if ((products.find { it.name == name }?.quantity ?: 0) <= 0) throw NoProductException(name)
+        val idx = products.indexOfFirst { it.name == name}
+        if (idx < 0) throw InvalidProductNameException(name)
+        if (products[idx].price > clientAmount) throw ExpensiveProductException()
+        products[idx].quantity -= 1
+        clientAmount -= products[idx].price
     }
 
     fun addClientAmount(amount: Int) {

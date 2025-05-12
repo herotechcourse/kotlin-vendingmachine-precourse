@@ -12,4 +12,6 @@ sealed class VendingMachineException(message: String) : IllegalArgumentException
     class InvalidProductNameException(name: String) : VendingMachineException("Product not found: $name")
 
     class NoProductException(name: String) : VendingMachineException("Product out of stock: $name")
+
+    class ExpensiveProductException() : VendingMachineException("The product is too expensive for your budget")
 }
