@@ -38,6 +38,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `exception test for empty input`() {
+        assertSimpleTest {
+            runException("\n")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }

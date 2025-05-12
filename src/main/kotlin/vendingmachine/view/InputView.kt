@@ -37,7 +37,7 @@ object InputView{
         
         val productName = Console.readLine().trim()
 
-        return productName
+        return Validator.validatePurchaseProduct(productName)
     }
 
 

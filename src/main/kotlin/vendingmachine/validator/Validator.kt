@@ -31,6 +31,13 @@ object Validator {
         return parseInputBySemicolon(input)
     }
 
+    fun validatePurchaseProduct(input: String): String {
+        validateNonEmpty(input, "[ERROR] Input cannot be empty.")
+
+        return parseInputBySemicolon(input)
+    }
+
+
     fun parseInputBySemicolon(input: String): List<String> {
         val products = input.split(";").map { it.trim() }
         
