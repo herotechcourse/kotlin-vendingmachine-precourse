@@ -3,9 +3,13 @@ package vendingmachine
 class Product(
     val name: String,
     val price: Int,
-    val quantity: Int,
+    private var quantity: Int,
 ) {
     fun isProductAvailable(): Boolean {
         return quantity > 0
+    }
+
+    fun reduceQuantityOne() {
+        quantity--
     }
 }
