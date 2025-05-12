@@ -1,5 +1,7 @@
 package vendingmachine
 
+import vendingmachine.controller.MachineController
+
 fun main() {
-    // TODO: Implement the program
+MachineController().run()
 }
