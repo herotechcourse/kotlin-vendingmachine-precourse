@@ -1,7 +1,7 @@
 package vendingmachine
 
 class VendingMachine (private val initAMount: Int) {
-    private val inventory = mutableMapOf<Product, Int>()
+    val inventory = mutableMapOf<Product, Int>()
     private var cheapestProduct : Int = 0
     private var userBudget : Int = 0
 
