@@ -1,5 +1,10 @@
 package vendingmachine
 
 fun main() {
-    // TODO: Implement the program
+    try {
+        val program = Executor()
+        program.run()
+    } catch (e: IllegalStateException) {
+        return
+    }
 }
