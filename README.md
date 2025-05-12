@@ -5,7 +5,7 @@
 - input, output, data, check, behavior
 
 #### step1: coin balance
-- [ ] input : getCoinBalance
+- [x] input : getCoinBalance
 - [ ] data : validateCoinBalance
   - is not empty
   - is positive
@@ -41,5 +41,6 @@ i.e. 3000 - 1500(Cola)
 - checkBalanceAndCheapestProduct, findCheapestProduct, IsTooLittleAmount, immediateReturnAll, ImmediateReturnPart,  getProductToBuy, displayUnableToReturn
 
 ### class
-- vendingMachine
-- remainingProducts
+- Coin 
+- VendingMachine
+- RemainingProducts

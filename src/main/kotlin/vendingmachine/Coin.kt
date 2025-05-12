@@ -5,6 +5,5 @@ enum class Coin(val amount: Int) {
     COIN_100(100),
     COIN_50(50),
     COIN_10(10),
-
-    // TODO: Implement additional functions
+    COIN_UNIT(10)
 }
