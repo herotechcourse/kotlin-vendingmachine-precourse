@@ -26,15 +26,20 @@ src/
 8. Invalid inputs throw an `IllegalArgumentException` or `IllegalStateException` and re-prompt the user.
 
 ## 🚧 Progress Checklist
-✅
-- [] Set up project structure and build system
-- [] Create Product class
-- [] Create VendingMachineManager class
-- [] Create Enum for Coins
-- [] Add user input logic
+
+- [✅] Set up project structure and build system
+- [✅] Create Product class
+- [✅] Create VendingMachineManager class
+- [✅] Create Enum for Coins
+- [✅] Add user input logic
+- [✅] Build Coins Generating Logic
+- [✅] Build Creating Products logic
+- [✅] Build getting minimum product cost Logic
 - [] Add input validation
-- [] Build purchasing item logic
+- [✅] Build purchasing item logic
 - [] Build dealing with remaining coins logic
+    - [] Add getting fewest coins possible logic
+- [] Add calcuating unreturned remainder
 - [] Handle exceptions properly
 - [] Write unit tests for all major components
 - [] Enhance Readability
