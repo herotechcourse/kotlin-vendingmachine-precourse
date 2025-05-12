@@ -10,6 +10,14 @@ class BalanceAmount {
         return int
     }
 
+    private fun validateDivisibleByTen(amount: Any) {
+        TODO("Not yet implemented")
+    }
+
+    private fun validateInputNotEmpty(input: Any) {
+
+    }
+
 
 }
 }
