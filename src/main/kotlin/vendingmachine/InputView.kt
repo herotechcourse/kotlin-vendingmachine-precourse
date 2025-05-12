@@ -11,7 +11,7 @@ object InputView {
     fun readValidVendingMachineAmount():Int {
         while (true) {
             try {
-                return readVendingMachineAmount()
+                return readCurrency("Enter the amount the vending machine holds:")
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
@@ -28,20 +28,43 @@ object InputView {
         }
     }
 
-    /**
-     * Read the value and returns the amount
-     */
-    private fun readVendingMachineAmount():Int {
-        println("Enter the amount the vending machine holds:")
-        val input = Console.readLine()
-        val amount = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be a valid number.")
-        InputValidator.validateVendingMachineAmount(amount)
-        return 0
+    fun readValidPurchaseAmount(): Int {
+        while (true) {
+            try {
+                return readCurrency("Please enter the amount of money:")
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
+
+    fun readValidProductName():String{
+        while (true) {
+            try {
+                return readProductName()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     private fun readProducts():MutableMap<String, List<Int>> {
         println("Enter product names, prices, and quantities:")
         val input = Console.readLine()
         return InputValidator.parseProducts(input)
+    }
+
+    private fun readCurrency(inputMessage:String):Int{
+        println(inputMessage)
+        val input = Console.readLine()
+        val amount = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be a valid number.")
+        InputValidator.validateVendingMachineAmount(amount)
+        return amount
+    }
+
+    private fun readProductName():String {
+        println("Please enter the name of the product to purchase:")
+        val input = Console.readLine()
+        return input
     }
 }

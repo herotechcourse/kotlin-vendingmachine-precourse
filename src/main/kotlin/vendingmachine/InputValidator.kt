@@ -28,6 +28,7 @@ object InputValidator {
             val quantity = convertValidInteger(item[2])
             val price = convertValidInteger(item[1])
             isDivisibleByTen(price)
+            isGreaterThan100(price)
             res[item[0]] = listOf(price,quantity)
         }
         return res
@@ -39,5 +40,9 @@ object InputValidator {
 
     private fun isDivisibleByTen(amount:Int) {
         if (amount % 10 != 0) throw IllegalArgumentException("[ERROR] Amount must be divisible by 10.")
+    }
+
+    private fun isGreaterThan100(amount: Int) {
+        if (amount < 100) throw IllegalArgumentException("[ERROR] Amount must be greater than 100.")
     }
 }
