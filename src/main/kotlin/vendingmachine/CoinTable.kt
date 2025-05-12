@@ -1,4 +1,8 @@
 package vendingmachine
 
-class CoinTable {
+class CoinTable(private val coins: List<Coin>) {
+
+    fun getCoinCount() : Map<Coin, Int> {
+        return coins.groupingBy { it }.eachCount()
+    }
 }
