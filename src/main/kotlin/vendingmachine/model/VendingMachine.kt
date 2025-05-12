@@ -1,15 +1,28 @@
 package vendingmachine.model
 
 import vendingmachine.Coin
+import vendingmachine.exception.VendingMachineException.InvalidProductNameException
+import vendingmachine.exception.VendingMachineException.NoProductException
 
 class VendingMachine(private val coins: MutableList<Coin>, private val products: MutableList<Product>) {
-    private var clientAmount: Int = 0
+    var clientAmount: Int = 0
+        private set
 
     fun validateUserAmount(amount: Int): Pair<Int, Boolean> {
         val minValue = products.minOfOrNull { it.price } ?: return Pair(amount, false)
         if (minValue > amount) return Pair(amount, false)
         if (products.all { it.quantity == 0 }) return Pair(amount, false)
         return Pair(amount, true)
+    }
+
+    fun validateProduct(product: String): String {
+        if (products.any { it.name == product }) return product
+        throw InvalidProductNameException(product)
+    }
+
+    fun purchaseProduct(name: String) {
+        if ((products.find { it.name == name }?.quantity ?: 0) <= 0) throw NoProductException()
+        val product = products.find {it.name == name} ?: throw InvalidProductNameException()
     }
 
     fun addClientAmount(amount: Int) {

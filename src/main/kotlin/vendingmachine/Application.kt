@@ -23,12 +23,15 @@ fun main() {
     OutputView.displayVendingMachineCoins(coins)
     val products = retry({ ProductsGeneratorService.generateWith(InputView.readProducts()) })
     val vMachine = VendingMachine(coins, products)
+    var clientAmount = retry({ vMachine.validateUserAmount(InputView.readClientAmount()) })
+    vMachine.addClientAmount(clientAmount.first)
+    if (!clientAmount.second) {
+        OutputView.displayChangeReturned(vMachine.returnChange())
+        return
+    }
     while (true) {
-        val amount = retry({ vMachine.validateUserAmount(InputView.readClientAmount()) })
-        vMachine.addClientAmount(amount.first)
-        if (!amount.second) {
-            OutputView.displayChangeReturned(vMachine.returnChange())
-            return
-        }
+        val product = retry( {vMachine.validateProduct(InputView.readClientProduct(clientAmount.first))})
+        vMachine.purchaseProduct(product)
+        clientAmount = vMachine.validateUserAmount(vMachine.clientAmount)
     }
 }

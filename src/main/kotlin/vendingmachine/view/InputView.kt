@@ -29,11 +29,19 @@ object InputView {
         return amount
     }
 
+    fun readClientProduct(currentAmount: Int): String {
+        println("${Constants.INSERTED_AMOUNT} $currentAmount KRW")
+        println(Constants.PRODUCT_NAME_PROMPT)
+        val input = Console.readLine()?.trim() ?: throw InvalidInputException()
+        if (input.isEmpty()) throw InvalidInputException()
+        return input.lowercase().replaceFirstChar { it.uppercase() }
+    }
+
     object Constants {
         const val VENDING_AMOUNT_PROMPT = "Enter the amount the vending machine holds:"
         const val VENDING_PRODUCTS_PROMPT = "Enter product names, prices, and quantities:"
         const val USER_AMOUNT = "Please enter the amount of money:"
-//        const val INSERTED_AMOUNT = "Inserted amount:"
-//        const val PRODUCT_NAME_PROMPT = "Please enter the name of the product to purchase:"
+        const val INSERTED_AMOUNT = "Inserted amount:"
+        const val PRODUCT_NAME_PROMPT = "Please enter the name of the product to purchase:"
     }
 }
