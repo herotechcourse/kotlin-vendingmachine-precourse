@@ -2,6 +2,7 @@ package vendingmachine.controller
 
 import vendingmachine.view.InputView
 import vendingmachine.view.OutputView
+import vendingmachine.util.Change
 import vendingmachine.Coin
 import vendingmachine.model.Product
 
@@ -16,10 +17,9 @@ class VendingMachineController {
         val minimumCost = getMinimumCost(products)
 
         val totalInitialAmount = getInitialAmount()
-        val remaining = generateVendingMachine(products, totalInitialAmount, minimumCost)
+        val remainder = generateVendingMachine(products, totalInitialAmount, minimumCost)
 
-        OutputView().displayInt(remaining)
-        // OutputView().displayProducts(products)
+        OutputView().displayInitialCoins(coinsInVendingMachine)
     }
 
     fun getInitialChange(): Int {
@@ -33,18 +33,22 @@ class VendingMachineController {
         return initialAmount
     }
 
-    fun getChangeCoins(change: Int): MutableList<Coin>{
-        val coins = mutableListOf<Coin>()
+    fun getChangeCoins(change: Int): List<Change>{
+        val changes = mutableListOf<Change>()
         var remaining = change
+
+        Coin.values().forEach {
+            changes.add(Change(it, 0))
+        }
 
         while (remaining >= 10) {
             val amount = Randoms.pickNumberInList(listOf(500, 100, 50, 10))
             if (remaining >= amount) {
                 remaining -= amount
-                coins.add(Coin.from(amount))
+                changes.first { it.getCoin() == Coin.from(amount) }.increment()
             }
         }
-        return coins
+        return changes.toList()
     }
 
     fun getProducts(): List<Product> {
@@ -93,7 +97,26 @@ class VendingMachineController {
         return currentAmount
     }
 
-    
+    // fun returnChange(remainder: Int, coinsInVendingMachine: List<Coin>) List<Coin>{
+    //     var currentRemainder = remainder
+    //     var remainingCoins = coinsInVendingMachine.toMutableList()
+    //     val coins = mutableListOf<Coin>()
+
+    //     while (currentRemainder > 0 || remainingCoins.size == 0) {
+    //         remainingCoins.filterNot {it.amount > currentRemainder}
+    //     }
+    //     // for (coin in Coin.values()){
+    //     //     if (currentRemainder < 10) return currentRemainder
+
+    //     //     val neededCoinCount = ( currentRemainder / coin.amount )
+    //     //     val possibleCoinCount = coins.count { coin == it }
+
+    //     //     currentRemainder = currentRemainder - (possibleCoinCount * coin.amount)
+    //     //     coins.add(Coin.from(amount))
+    //     // }
+
+    //     return coins.toList()
+    // }
 
     fun getMinimumCost(products: List<Product>) : Int {
         return products.minOf { it.getCost() }
