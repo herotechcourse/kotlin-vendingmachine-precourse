@@ -10,7 +10,6 @@ object CoinGenerator {
             val amount = Randoms.pickNumberInList(listOf(500, 100, 50, 10))
             if (temp >= amount) {
                 temp -= amount
-                println(amount)
                 val key: Coin = Coin.entries.find { it.amount == amount } ?: Coin.COIN_10
                 map[key] = map.getValue(key) + 1
             }
