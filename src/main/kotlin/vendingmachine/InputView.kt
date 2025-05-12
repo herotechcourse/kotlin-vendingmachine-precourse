@@ -41,12 +41,13 @@ object InputView {
         return products
     }
 
-    fun readPurchasingProductName(products: List<Product>): String {
+    fun readPurchasingProduct(products: List<Product>): Product {
         val userInput = Console.readLine().trim()
         val productNames = products.map { it.name }
-        if (userInput in productNames)
-            return userInput
-        throw IllegalArgumentException("[ERROR] Invalid input.")
+        require(userInput in productNames) { "[ERROR] Invalid input." }
+        val targetProduct = products.filter { it.name == userInput }[0]
+        require(targetProduct.isProductAvailable()) { "[ERROR] The product is out of stock." }
+        return targetProduct
     }
 
 }
