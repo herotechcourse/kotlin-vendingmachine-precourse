@@ -1,16 +1,19 @@
-package vendingmachine
+package vendingmachine.view
 
+import vendingmachine.Coin
 // import lotto.Application.Companion.Prize
 
 class OutputView {
     /**
      * Prints the purchased tickets.
      */
-    fun printCoins(conins: List<List<Int>>) {
-        println("Coins in the vending machine:")
-        coins.forEach { println(it) }
-        println()
-    }
+    // fun printCoins(coins: Map<Coin, Int>) {
+    //     println("Coins in the vending machine:")
+    //     Coin.values.forEach { denomination ->
+    //         val count = coins.getOrDefault(denomination, 0)
+    //         println("${denomination.amount} KRW - $count") 
+    //     }
+    // }
 
     /**
      * Prints the error message to console.

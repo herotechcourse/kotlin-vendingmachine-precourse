@@ -8,6 +8,10 @@ import vendingmachine.validators.NumberRangeValidator
 import vendingmachine.validators.NumbersCountValidator
 import vendingmachine.validators.NumbersRangeValidator
 import vendingmachine.validators.UniqueNumbersValidator
+import vendingmachine.view.OutputView
+import camp.nextstep.edu.missionutils.Randoms
+import vendingmachine.Coin
+
 
 class Application {
     companion object {
@@ -20,20 +24,19 @@ class Application {
         val amount = promptAmount(inputView)
         //println(amount)
 
-        val coin = Coin(amount)
-        val coninsInVendingMachine = coin.generate(amount)
+        val coninsInVendingMachine = generate(amount)
 
-        val outputView = OutputView()
-        outputView.pintCoinsconinsInVendingMachine
+        //val outputView = OutputView()
+        printCoins(coninsInVendingMachine)
 
 
 
         // hard-coded winning numbers and bonus ball for testing
-        println("Coins in the vending machine:")
-        println("500 KRW - 0")
-        println("100 KRW - 4")
-        println("50 KRW -1")
-        println("10 KRW - 0")
+        // println("Coins in the vending machine:")
+        // println("500 KRW - 0")
+        // println("100 KRW - 4")
+        // println("50 KRW -1")
+        // println("10 KRW - 0")
 
         println("Enter product names, prices, and quantities:")
         println("[Cola,1500,20];[Soda,1000,10]")
@@ -55,6 +58,30 @@ class Application {
         val combinedValidator = CombinedValidator<Int>(validators)
         val amountPrompter = Prompter(inputView, AMOUNT_PROMPT_TEXT, combinedValidator)
         return amountPrompter.prompt()
+    }
+
+    fun printCoins(coins: Map<Coin, Int>) {
+        println("Coins in the vending machine:")
+        Coin.values().forEach { denomination ->
+            val count = coins.getOrDefault(denomination, 0)
+            println("${denomination.amount} KRW - $count")
+        }
+    }
+
+
+    fun generate(amount: Int): Map<Coin, Int> {
+        var remaining = amount
+        val coinMap = mutableMapOf<Coin, Int>()
+
+        while (remaining >= 10) {
+            val amount = Randoms.pickNumberInList(listOf(500, 100, 50, 10))
+            if (remaining >= amount) {
+                remaining -= amount
+                val coin = Coin.values().find {it.amount == amount} ?: continue
+                coinMap[coin] = coinMap.getOrDefault(coin, 0) + 1
+            }
+        }
+        return coinMap
     }
 
 }
