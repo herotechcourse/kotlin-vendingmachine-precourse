@@ -7,11 +7,10 @@ fun main() {
 		OutputView.displayVendingMachineCoins(exchangedCoins)
 
 		val products = InputView.readProducts()
-		// TODO: if all products price bigger than amount -> handle
 
 		val userMoney = InputView.readUserMoney()
-
-		val vendingMachine = VendingMachine(exchangedCoins)
+		val vendingMachine = VendingMachine(exchangedCoins, products, userMoney)
+		vendingMachine.run()
 
 
 	} catch (e: IllegalArgumentException) {

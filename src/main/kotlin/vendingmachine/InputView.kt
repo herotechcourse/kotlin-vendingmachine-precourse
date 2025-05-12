@@ -36,6 +36,10 @@ object InputView {
 		)
 	}
 
+	fun printInsertedAmount(amount: Int) {
+		println("Inserted amount: $amount KRW")
+	}
+
 	fun readProductPurchase(products: List<Product>): String {
 		try {
 			println(READ_PURCHASE_PRODUCT)
@@ -74,7 +78,6 @@ object InputView {
 		require(price % 10 == 0) {"invalid input: $price can not divide by 10, $name - $price % 10 = ${price % 10}"}
 		return Product(name, price, quantity)
 	}
-
 
 	private fun<T> readOrThrow(
 		ask: () -> Unit,

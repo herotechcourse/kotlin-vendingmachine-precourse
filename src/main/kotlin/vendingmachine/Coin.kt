@@ -1,7 +1,7 @@
 package vendingmachine
 
-data class ExchangedCoin(val coin: Coin, val count: Int, val remaining: Int) {
-    fun sum():Int {
+data class ExchangedCoin(val coin: Coin, var count: Int, val remaining: Int) {
+    fun sum(): Int {
         val coinType = when (coin) {
 	        Coin.COIN_500 -> 500
 	        Coin.COIN_100 -> 100
@@ -10,7 +10,10 @@ data class ExchangedCoin(val coin: Coin, val count: Int, val remaining: Int) {
         }
         return coinType * count
     }
+
 }
+
+
 
 enum class Coin(val amount: Int) {
     COIN_500(500),
