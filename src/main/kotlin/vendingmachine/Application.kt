@@ -1,6 +1,6 @@
 package vendingmachine
 
 fun main() {
-    val machine = VendingMachine(InputView.handleInitialAmount())
+    val machine = VendingMachine(InputView.handleInitialAmountInput())
     machine.runMachine()
 }
