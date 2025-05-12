@@ -14,8 +14,9 @@ Users can input amount of money the machine holds, input products, their price a
 - Accept product names, prices, and quantities input from the user.
 - Validate that prices start at 100KRW and is divisible by 10.
 - Accept amount of money from the user.
+- Accept Product to Purchase from the user.
 - Validate that remaining balance is bigger than the cheapest available product and if all products are sold out, immediately return change.
-- Return change using the fewest number of coins possible from its current coin inventory.
+- Return change using the fewest number of coins possible from its current coin inventory and repromt purchase item again to user until remaining value is less than cheapest product.
 - Handle insufficient change available: returns as much as it can, unureturned remains in the vending machine 
 - Display change returned in number of coins per tier.
 - Display amount unable to be returned
