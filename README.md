@@ -13,7 +13,7 @@ Coins are generated randomly and users can add and purchase products to/from the
 - [ ] amount of money for buying products
 - [ ] name(s) of the product(s) to purchase
 - [ ] on **invalid input**, IllegalArgumentException is thrown followed by a message: <br/>
-`[Error]: {error message}`
+`[ERROR]: {error message}`
 
 #### Output
 - [ ] display the randomly generated coins in the vending machine in the following format:
