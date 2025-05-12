@@ -4,7 +4,7 @@
 - [ ] Input amount the vending machine holds
 - [ ] Input list of product the vending machine holds:
   - each product separated by semi coma and surrounded by squared brackets
-  - product specified with product name, price, quantity. Price must by divisible by 10
+  - product specified with product name, price, quantity. Price must be divisible by 10
 - [ ] Input amount of money
 
 ### Vending machine
