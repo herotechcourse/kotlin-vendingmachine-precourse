@@ -93,8 +93,11 @@ class VendingMachine(private val _amount: Int) {
     }
 
     private fun returnChange(money: Int): Map<Coin, Int> {
-        val change: MutableMap<Coin, Int> = mutableMapOf()
-        //
+        val change: MutableMap<Coin, Int> = mutableMapOf(Coin.COIN_500 to 0, Coin.COIN_100 to 0, Coin.COIN_50 to 0, Coin.COIN_10 to 0)
+//        while (money / 500 >= 1) {
+//            if (coins[Coin.COIN_500]!! >= 0) {
+//            }
+//        }
         return change
     }
 
