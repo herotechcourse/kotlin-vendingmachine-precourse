@@ -14,4 +14,11 @@ class OutputView {
     fun askSellerProductQuantity() {
         println("Register product quantity")
     }
+
+    fun askCostumerAmount() {
+        println("Please enter the amount of money:")
+    }
+    fun askCostumerProduct() {
+        println("Please enter the product name:")
+    }
 }

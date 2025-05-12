@@ -3,25 +3,34 @@ package vendingmachine
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
-    val outputView = OutputView()
+
+
     fun setupAmountOfCoins(): Int {
-        outputView.askSellerMachineAmount()
         val amount = Console.readLine().toInt()
         return amount
     }
 
-    fun setupProduct(): MutableList<String> {
-        val product = mutableListOf<String>()
-        outputView.askSellerProductName()
+    fun setupProductName(): String {
         val name = Console.readLine()
-        outputView.askSellerProductPrice()
-        val price = Console.readLine()
-        outputView.askSellerProductQuantity()
+        return name
+    }
+    fun setupProductPrice(): String {
+        val readPrice = Console.readLine()
+        val price = "KRW $readPrice"
+        return price
+    }
+    fun setupProductQuantity(): String {
         val quantity = Console.readLine()
-        product.add(name)
-        product.add("KRW $price")
-        product.add(quantity)
+        return quantity
+    }
 
+    fun customerAmount(): Int  {
+        val amount = Console.readLine().toInt()
+        return amount
+    }
+    fun customerProduct(): String  {
+        val product = Console.readLine()
         return product
     }
+
 }
