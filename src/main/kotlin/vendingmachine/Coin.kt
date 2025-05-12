@@ -6,5 +6,7 @@ enum class Coin(val amount: Int) {
     COIN_50(50),
     COIN_10(10),
 
-    // TODO: Implement additional functions
+    companion object {
+        val valuesDescending = vales().sortedByDescending {it.amount}
+    }
 }
