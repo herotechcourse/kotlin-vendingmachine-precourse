@@ -55,4 +55,29 @@ class VendingMachine(private val _amount: Int) {
         _budget = money
     }
 
+    private fun searchProduct(productName: String): Int {
+        for (i in 0 until _products.size) {
+            if (_products[i].productName == productName) {
+                return i
+            }
+        }
+        throw IllegalArgumentException("[ERROR]: product not found")
+    }
+
+    fun purchaseProduct(productName: String) {
+        val index = searchProduct(productName)
+        if (_budget - _products[index].price >= 0) {
+            _budget -= _products[index].price
+            _products[index].decreaseQuantity()
+        }
+        else
+            returnChange()
+    }
+
+    private fun returnChange() {
+
+    }
+
+
+
 }

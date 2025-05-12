@@ -58,7 +58,8 @@ class Executor() {
         OutputView.displayInsertedAmount(machine.budget)
         while (true) {
             try {
-                InputView.getProductName()
+                val product = InputView.getProductName()
+                machine.purchaseProduct(product)
                 break
             } catch (e: IllegalArgumentException) {
                 println(e.message)
