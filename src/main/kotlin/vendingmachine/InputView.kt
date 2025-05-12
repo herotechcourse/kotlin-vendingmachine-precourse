@@ -42,7 +42,7 @@ object InputView {
     }
 
     fun getProductName(): String {
-        println("\nPlease enter the name of the product to purchase:")
+        println("Please enter the name of the product to purchase:")
         val input = Console.readLine().trim()
         for (char in input) {
             require(char.isLetter()) { "[ERROR]: input can only contain letters" }
