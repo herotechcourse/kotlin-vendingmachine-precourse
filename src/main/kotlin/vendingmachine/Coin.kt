@@ -1,4 +1,4 @@
-package newvendingMachine
+package vendingMachine
 
 import camp.nextstep.edu.missionutils.Randoms
 

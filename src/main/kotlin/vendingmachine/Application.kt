@@ -1,4 +1,4 @@
-package newvendingMachine
+package vendingmachine
 
 import vendingmachine.InputView.getBalanceAmount
 import vendingmachine.InputView.getChangeInventory

@@ -1,6 +1,6 @@
 package vendingmachine
 
-import newvendingMachine.Coin
+import vendingMachine.Coin
 
 class VendingMachine(
     private var changeInventory: Int,

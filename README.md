@@ -1,14 +1,8 @@
 # kotlin-vendingmachine-precourse
 
-This is the submission for the final coding test for the "Hero Tech Course: Berlin Edition" by [Deniz](https://github.com/deniz-oezdemir).
-
-This project is a console-based vending machine simulation. After the user inputs the machine's change and product details,
-the user can make purchases as long as he has sufficient funds. The program execution ends with the machine then calculating the change.
-
 ## feature list
 
 The features will be implemented in the following order:
-
 - [x] read change inventory amount from user input
     - [x] validate inventory amount is a number
     - [x] validate inventory amount is divisible by 10

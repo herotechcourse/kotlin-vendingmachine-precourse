@@ -1,7 +1,4 @@
 package vendingmachine
-
-import vendingmachine.VendingMachine
-
 object OutputView {
 
     fun announceCoinsInVendingMachine(vendingMachine: VendingMachine) {
