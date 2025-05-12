@@ -11,7 +11,7 @@ object Parser {
         require(input.isNotEmpty()) { "[ERROR] List of products input is empty" }
         return input.split(";")
                     .onEach { require(it.isNotEmpty()) { "Product is empty" } }
-                    .map { it.trim().removeSurrounding("[", "]") }.onEach { println(it) }
+                    .map { it.trim().removeSurrounding("[", "]") }
     }
 
     fun readMoneyAmount(input: String): Int {
