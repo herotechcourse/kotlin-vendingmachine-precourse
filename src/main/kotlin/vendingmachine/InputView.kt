@@ -57,7 +57,7 @@ object InputView {
     }
 
     private fun validatePurchaseOfProduct(purchaseString : String) : Boolean {
-        //validate if thats an existing product
+        //validate if that is an existing product
         //return true or false
     }
 
