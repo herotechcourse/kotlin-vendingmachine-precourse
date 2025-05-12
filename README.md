@@ -8,9 +8,9 @@
 ```
 ### basic process 
 
-- [ ] [1] get amount the vending machine holds
-  - [ ] check a validation 
-  - [ ] change to coins
+- [x] [1] get amount the vending machine holds
+  - [x] check a validation 
+  - [x] change to coins
   - Coins are generated only for the amount initially entered
   - no additional coins are created beyond that.
 

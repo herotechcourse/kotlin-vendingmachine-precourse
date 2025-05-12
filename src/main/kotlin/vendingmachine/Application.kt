@@ -1,5 +1,7 @@
 package vendingmachine
 
 fun main() {
-    // TODO: Implement the program
+	val vendingMachineHas = InputView.readAmountVendingMachine()
+	val exchangedCoins = Coin.exchange(vendingMachineHas)
+	OutputView.displayVendingMachineCoins(exchangedCoins)
 }
