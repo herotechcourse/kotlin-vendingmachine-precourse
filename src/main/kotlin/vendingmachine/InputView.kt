@@ -15,4 +15,40 @@ object InputView {
             initialAmountInput()
         }
     }
+
+    fun productDetailsInput() {
+        println ("\nEnter product names, prices, and quantities:")
+        val input = Console.readLine()
+        val allProducts = input.split(";")
+        for (product in allProducts) {
+            println(product)
+        }
+    }
+
+    fun productPurchaseAmountInput() :Int {
+        println("\nPlease enter the amount of money:")
+        val input = Console.readLine()
+        return try{
+            val purchaseAmount = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Amount must be a number.")
+            require(purchaseAmount > 0) {"[ERROR] Amount must be greater than 0"}
+            purchaseAmount
+        } catch (e: IllegalArgumentException) {
+            println("${e.message}")
+            productPurchaseAmountInput()
+        }
+    }
+
+    fun productPurchaseName(remainingAmount: Int): String {
+        println("\nInserted amount: $remainingAmount KRW")
+        println("Please enter the name of the product to purchase:\n")
+        return try {
+            val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Product Name cannot be empty")
+            input.removeWhiteSpaces()
+        } catch (e : IllegalArgumentException) {
+            println("${e.message}")
+            productPurchaseName(remainingAmount)
+        }
+    }
+
+    private fun String.removeWhiteSpaces() = replace(" ","")
 }
