@@ -1,6 +1,6 @@
 package vendingmachine.domain
 
-class machineProducts {
+class MachineProducts {
     companion object {
         fun generateProducts(productList: List<String>): List<Product> {
             val listProducts = mutableListOf<Product>()
