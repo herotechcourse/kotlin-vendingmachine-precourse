@@ -21,7 +21,6 @@ object OutputView {
         }
     }
 
-    // TODO: reactor, max 10 lines
     fun printChange(change: List<Int>) {
         println("Change returned:")
         if (change[0] != 0) {

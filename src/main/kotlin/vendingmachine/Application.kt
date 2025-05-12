@@ -2,7 +2,7 @@ package newvendingMachine
 
 import vendingmachine.InputView.getBalanceAmount
 import vendingmachine.InputView.getChangeInventory
-import vendingmachine.InputView.getProducts
+import vendingmachine.InputView.getVendingMachineProducts
 import vendingmachine.InputView.getPurchase
 import vendingmachine.OutputView.announceCoinsInVendingMachine
 import vendingmachine.OutputView.printChange
@@ -12,9 +12,9 @@ import vendingmachine.VendingMachine
 
 fun main() {
     val vendingMachine = initVendingMachine()
-    val products = getProducts()
+    val products = getVendingMachineProducts()
 
-    processPurchases(vendingMachine, products)
+    processUserPurchases(vendingMachine, products)
     processChange(vendingMachine)
 }
 
@@ -25,7 +25,7 @@ fun initVendingMachine(): VendingMachine {
     return vendingMachine
 }
 
-fun processPurchases(vendingMachine: VendingMachine, products: List<Product>) {
+fun processUserPurchases(vendingMachine: VendingMachine, products: List<Product>) {
     vendingMachine.userBalance = getBalanceAmount()
     println("Inserted amount: ${vendingMachine.userBalance} KRW")
 

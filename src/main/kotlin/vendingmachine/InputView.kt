@@ -1,7 +1,6 @@
 package vendingmachine
 
 import camp.nextstep.edu.missionutils.Console
-import vendingmachine.Product
 
 object InputView {
 
@@ -72,7 +71,6 @@ object InputView {
         return Product(name, price, quantity)
     }
 
-    // TODO: refactor, max 10 lines
     private fun tryToProducts(input: String): List<Product> {
         val result = mutableListOf<Product>()
         try {
@@ -102,7 +100,7 @@ object InputView {
         return products
     }
 
-    fun getProducts(): List<Product> {
+    fun getVendingMachineProducts(): List<Product> {
         while (true) {
             try {
                 return readAndValidateProducts()
