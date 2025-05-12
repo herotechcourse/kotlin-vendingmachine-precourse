@@ -50,4 +50,24 @@ which is to implement a **Vending Machine game**.
 
 ## How to Run
 
+### 1. Via IntelliJ IDEA
+1. Open the project in IntelliJ IDEA.
+2. Locate the `Application.kt` file (inside `src/main/kotlin/lotto/`).
+3. Right-click on the `main` function and select **Run 'ApplicationKt'**.
+
 ## Testing
+
+As per Task guidelines, this project uses JUnit 5 and AssertJ for all testing.
+
+You can run tests via:
+
+### 1. IntelliJ IDEA
+1. Open the project in IntelliJ IDEA
+2. Locate the desired test file inside the test directory.
+3. Right-click on the file test class and select Run.
+
+### 2. Terminal
+
+```bash
+./gradlew clean test
+```
