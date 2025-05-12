@@ -21,7 +21,10 @@ class VendingMachineController {
         val remainder = generateVendingMachine(products, totalInitialAmount, minimumCost)
 
         val finalChange = returnChange(remainder, coinsInVendingMachine)
-        OutputView().displayCoinChanges(finalChange)
+
+        val unreturnedAmount = getUnreturnedAmount(finalChange, remainder)
+
+        OutputView().displayResults(finalChange, unreturnedAmount)
     }
 
     fun getInitialChange(): Int {
@@ -99,7 +102,7 @@ class VendingMachineController {
         return currentAmount
     }
 
-    fun returnChange(remainder: Int, coinsInVendingMachine: List<Change>): List<Change>{
+    fun returnChange(remainder: Int, coinsInVendingMachine: List<Change>): List<Change> {
         var currentRemainder = remainder
         val returningChange = mutableListOf<Change>()
 
@@ -110,17 +113,25 @@ class VendingMachineController {
             val neededCoinCount = ( currentRemainder / amount )
             val possibleCoinCount = it.getCount()
             
-            if(possibleCoinCount > neededCoinCount) {
+            if (possibleCoinCount > neededCoinCount) {
                 currentRemainder -= ( neededCoinCount * amount )
                 returningChange.add(Change(Coin.from(amount), neededCoinCount))
             } else {
                 currentRemainder -= ( possibleCoinCount * amount )
                 returningChange.add(Change(Coin.from(amount), possibleCoinCount))
             }
-
         }
 
         return returningChange.toList()
+    }
+
+    fun getUnreturnedAmount(coinsReturned: List<Change>, remainder: Int) : Int{
+        var unreturnedAmount = remainder
+        coinsReturned.forEach{
+            unreturnedAmount = remainder - (it.getCount() * it.getCoin().amount)
+        }
+
+        return unreturnedAmount
     }
 
     fun getMinimumCost(products: List<Product>) : Int {
