@@ -11,4 +11,14 @@ object OutputView {
     fun displayInsertedAmount(amount: Int) {
         println("\nInserted amount: $amount KRW")
     }
+
+    fun displayChange(change: Map<Coin, Int>, balance: Int) {
+        println("\nChange returned:")
+        for (entry in change) {
+            println("${entry.key.amount} KRW - ${entry.value}")
+        }
+
+        println("\nUnable to return $balance KRW")
+    }
+
 }
