@@ -21,14 +21,14 @@ The features will be implemented in the following order:
     - [x] validate that product exists
 - [x] calculate new balance of user
 - [x] repeat reading product to purchase from user input until
-  balance is smaller than cheapest product's price
+  balance is smaller than the cheapest product's price
 
 - [x] for each user input above:
     - [x] handle invalid user input by throwing an `IllegalArgumentException`
         - [x] re-prompt the user for input after an error
     - [x] ensure error messages follow the format: `[ERROR] <message>`
 
-- [x] calculate change as fewest number of coins possible
+- [x] calculate change as the lowest number of coins possible
 - [x] print change returned
 - [x] print change unable to return if any
 
