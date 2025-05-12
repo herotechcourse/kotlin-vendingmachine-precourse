@@ -7,4 +7,5 @@ enum class Coin(val amount: Int) {
     COIN_10(10),
 
     // TODO: Implement additional functions
+
 }
