@@ -3,9 +3,11 @@ package vendingmachine.controller
 import vendingmachine.model.CoinsGenerator
 import vendingmachine.model.Product
 import vendingmachine.view.InputView
+import vendingmachine.view.OutputView
 
 class VendingMachine {
     private val inputView = InputView()
+    private val outputView = OutputView()
     private var balance = 0
     private var purchaseAmount = 0
 
@@ -18,6 +20,7 @@ class VendingMachine {
         val products = inputView.inputProduct()
         //println(products[0].name + " "+ products[0].price +" " + products[0].quantity )
         purchaseAmount = inputView.inputPurchaseAmount()
+        outputView.displayInsertedAmount(purchaseAmount)
 
     }
 }
