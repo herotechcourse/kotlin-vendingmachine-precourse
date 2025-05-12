@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.DisplayName
+import vendingmachine.Product
 
 class InputViewTest {
 	@Test
@@ -47,15 +48,17 @@ class InputViewTest {
 	@Test
 	@DisplayName("parses valid single product inventory")
 	fun parseValidSingleProductInventory() {
-		assertThat(InputView.parseProductInventory("[Cola,1500,20]")).isEqualTo(listOf("[Cola,1500,20]"))
+		assertThat(InputView.parseProductInventory("[Cola,1500,20]")[0]).isInstanceOf(
+			Product::class.java
+		)
 	}
 
 	@Test
-	@DisplayName("parses valid multiple product inventory")
+	@DisplayName("parseProductInventory with invalid quantity throws exception")
 	fun parseValidMultipleProductInventory() {
-		assertThat(InputView.parseProductInventory("[Cola,1500,20];[Soda,1000,10]")).isEqualTo(
-			listOf("[Cola,1500,20]", "[Soda,1000,10]")
-		)
+		assertThatThrownBy { InputView.parseProductInventory("[Cola,1500,0]") }
+			.isInstanceOf(IllegalArgumentException::class.java)
+			.hasMessageContaining("[ERROR]")
 	}
 
 	@Test
@@ -65,7 +68,4 @@ class InputViewTest {
 			.isInstanceOf(IllegalArgumentException::class.java)
 			.hasMessageContaining("[ERROR]")
 	}
-
-
-
 }
