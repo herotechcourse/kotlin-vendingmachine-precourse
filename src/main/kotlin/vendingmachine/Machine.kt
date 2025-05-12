@@ -48,4 +48,9 @@ class Machine(private val amountHolding: Int) {
     fun getRemainingInfo(): String {
         return "Inserted amount: $_remaining KRW"
     }
+
+    fun processOrder(targetProduct: Product) {
+        _remaining -= targetProduct.price
+        targetProduct.reduceQuantityOne()
+    }
 }
