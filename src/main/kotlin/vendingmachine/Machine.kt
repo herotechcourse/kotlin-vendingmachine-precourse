@@ -57,4 +57,25 @@ class Machine(private val amountHolding: Int) {
     fun isAnyAvailable(): Boolean = products.sumOf { it.getQuantity() } > 0
 
     fun isOneAvailable(product: Product) {}
+
+    // TODO: Well unfortunate unfinished work
+    fun letsFinish() {
+        var usedCoins: MutableMap<Coin, Int> = mutableMapOf()
+        Coin.entries.forEach { usedCoins[it] = 0 }
+
+        var toReturn = remaining
+
+//        while (_coinBoard.values.sum() != 0 || toReturn != 0)
+        for (coin in Coin.entries) {
+            val targetCoinAmount = _coinBoard.getOrDefault(coin, 0)
+            val usedCoinAmount = usedCoins.getOrDefault(coin, 0)
+            while (targetCoinAmount > 0) {
+                if (_coinBoard.values.sum() == 0 || toReturn == 0) { break }
+                toReturn -= coin.amount
+                _coinBoard[coin] = targetCoinAmount - 1
+                usedCoins[coin] = usedCoinAmount + 1
+            }
+        }
+        return TODO("Well...")
+    }
 }
