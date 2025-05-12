@@ -14,4 +14,13 @@ class VendingMachine(val balance: Balance, private val products: List<String>) {
             store.plus(Pair(product, store.getOrDefault(product, 0) + quantity))
         }
     }
+
+    fun canProceedOrder(): Boolean {
+
+        val cheapest = store.keys.filter {  }
+    }
+
+    private fun minPrice(): Int {
+        var min = 0
+    }
 }
