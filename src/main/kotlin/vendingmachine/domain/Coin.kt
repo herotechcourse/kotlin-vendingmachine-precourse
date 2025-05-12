@@ -8,13 +8,16 @@ enum class Coin(val amount: Int) {
 
     // TODO: Implement additional functions
     companion object {
+
+        val valuesDescending = values().sortedByDescending { it.amount }
+
         fun from(amount: Int, ): Any {
             return when {
                 amount == 500 -> COIN_500
                 amount == 100 -> COIN_100
                 amount == 50 -> COIN_50
                 amount == 10 -> COIN_10
-                else -> {}
+                else -> throw IllegalArgumentException("[ERROR] Invalid coin amount: $amount")
             }
         }
     }

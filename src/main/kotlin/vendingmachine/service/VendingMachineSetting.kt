@@ -2,42 +2,40 @@ package vendingmachine.service
 
 import vendingmachine.view.InputView
 import vendingmachine.view.OutputView
-import vendingmachine.domain.Product
+
 import vendingmachine.domain.machineProducts
 
 object VendingMachineSetting {
-
     fun run() {
         val amount = InputView.readCoinAmount()
-        println(amount)
-
-        //Generate the Coins for exchange
         val machine = VendingMachine(amount)
-        val coins = machine.generateCoinsVendingMachine(amount)
-        OutputView.coinsVendingMachine(coins)
+        OutputView.coinsVendingMachine(machine.getCoinInventory())
 
-        //Next Adding products for the vending machine
-        val products = InputView.readProducts()
-        val productsInserted = machineProducts.generateProducts(products)
+        val productInputs = InputView.readProducts()
+        val products = machineProducts.generateProducts(productInputs)
+        machine.addProducts(products)
 
-        // Please enter the amount of money:
-        val amountCustomer = InputView.readAmountOfMoneyInserted()
+        val insertedAmount = InputView.readAmountOfMoneyInserted()
+        machine.setUserBalance(insertedAmount)
+        OutputView.currentlyAmount(insertedAmount)
 
-        //while (amountCustomer )
-        //output Inserted amount: 3000 KRW
-        OutputView.currentlyAmount(amountCustomer)
+        while (true) {
+            val cheapest = products.filter { it.quantity > 0 }.minByOrNull { it.price }?.price ?: break
+            if (machine.getBalance() < cheapest) break
 
-        //Please enter the name of the product to purchase:
-        InputView.buyProduct()
+            val selected = InputView.buyProduct()
+            val success = machine.purchaseProduct(selected)
+            if (!success) {
+                println("[ERROR] Invalid purchase or insufficient funds.")
+            } else {
+                OutputView.currentlyAmount(machine.getBalance())
+            }
+        }
 
-        //output Inserted amount: 1500 KRW
-
-
-        // If the remaining balance is less than the price of the
-        // cheapest available product, or if all products are sold out, the machine immediately returns change.
-
-        // If the machine cannot return the full amount in change, it returns as much as it can, using available coins.
-
-
+        val (change, unreturned) = machine.returnChange()
+        OutputView.displayChange(change)
+        if (unreturned > 0) {
+            println("\nUnable to return: $unreturned KRW")
+        }
     }
 }

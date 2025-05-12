@@ -1,61 +1,67 @@
 package vendingmachine.service
+import camp.nextstep.edu.missionutils.Randoms
 import vendingmachine.domain.Coin
+import vendingmachine.domain.Product
 
-class VendingMachine(private var amount: Int) {
+class VendingMachine(initialAmount: Int) {
+    private val coinInventory: MutableMap<Coin, Int> = mutableMapOf()
+    private val products: MutableList<Product> = mutableListOf()
+    private var userBalance: Int = 0
 
-    fun generateCoinsVendingMachine(amount: Int): Map<Coin, Int>{
-
-        val result = mutableMapOf<Coin, Int>()
-        //var tempAmount: Int = amount
-
-        while (this.amount != 0) {
-            if(amount % 500 == 0){
-                val count_500 = this.amount/500
-                for(i in 1..count_500 ){
-                    val coin = Coin.from(500)
-                    result[Coin.COIN_500] = result.getOrDefault(coin, 0) + 1
-
-                    this.amount -= 500
-                }
-
-            }
-            if(amount % 100 == 0){
-                val count_100 = this.amount/100
-                for(i in 1..count_100 ){
-                    val coin = Coin.from(100)
-                    result[Coin.COIN_100] = result.getOrDefault(coin, 0) + 1
-
-                    this.amount -= 100
-                }
-
-            }
-            if(amount % 50 == 0){
-                val count_50 = this.amount/50
-                for(i in 1..count_50 ){
-                    val coin = Coin.from(50)
-                    result[Coin.COIN_50] = result.getOrDefault(coin, 0) + 1
-
-                    this.amount -= 50
-                }
-
-            }
-            if(amount % 10 == 0){
-                val count_10 = this.amount/10
-                for(i in 1..count_10 ){
-                    val coin = Coin.from(10)
-                    result[Coin.COIN_10] = result.getOrDefault(coin, 0) + 1
-
-                    this.amount -= 10
-                }
-
-            }
-
-        }
-
-        return result
-
+    init {
+        coinInventory.putAll(generateCoins(initialAmount))
     }
 
+    private fun generateCoins(amount: Int): Map<Coin, Int> {
+        val result = mutableMapOf<Coin, Int>()
+        var remaining = amount
+        val denominations = Coin.valuesDescending.map { it.amount }
 
+        while (remaining >= 10) {
+            val coinAmount = Randoms.pickNumberInList(denominations)
+            if (remaining >= coinAmount) {
+                val coin = Coin.from(coinAmount)
+                result[coin as Coin] = result.getOrDefault(coin, 0) + 1
+                remaining -= coinAmount
+            }
+        }
+        return result
+    }
+
+    fun setUserBalance(balance: Int) {
+        this.userBalance = balance
+    }
+
+    fun addProducts(productsToAdd: List<Product>) {
+        products.addAll(productsToAdd)
+    }
+
+    fun getBalance(): Int = userBalance
+
+    fun purchaseProduct(productName: String): Boolean {
+        val product = products.find { it.name == productName } ?: return false
+        if (product.quantity <= 0 || userBalance < product.price) return false
+        product.quantity -= 1
+        userBalance -= product.price
+        return true
+    }
+
+    fun returnChange(): Pair<Map<Coin, Int>, Int> {
+        val changeMap = mutableMapOf<Coin, Int>()
+        var remaining = userBalance
+
+        for (coin in Coin.valuesDescending) {
+            val available = coinInventory[coin] ?: 0
+            val toUse = minOf(remaining / coin.amount, available)
+            if (toUse > 0) {
+                changeMap[coin] = toUse
+                remaining -= toUse * coin.amount
+                coinInventory[coin] = available - toUse
+            }
+        }
+
+        return Pair(changeMap, remaining)
+    }
+
+    fun getCoinInventory(): Map<Coin, Int> = coinInventory
 }
-
