@@ -32,8 +32,15 @@ class InputView {
         return productCatalog
     }
 
+    fun inputPurchaseAmount(): Int {
+        println(Messages.PURCHASE_AMOUNT)
+        val amount = Console.readLine().toInt()
+        return amount
+    }
+
     companion object Messages {
         const val MACHINE_AMOUNT = "Enter the amount the vending machine holds:"
         const val CREATE_PRODUCTS = "Enter product names, prices, and quantities:"
+        const val PURCHASE_AMOUNT = "Please enter the amount of money:"
     }
 }
