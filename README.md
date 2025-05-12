@@ -5,15 +5,16 @@ Implement a vending machine that returns change using the fewest number of coins
 ## Requirements
 
 - The machine randomly generates coins using the initial amount provided.
-  - Only 500 KRW, 100 KRW, 50 KRW, 10 KRW.
-  - Coins are generated only for the amount initially entered — no additional coins are created beyond that.
+    - Only 500 KRW, 100 KRW, 50 KRW, 10 KRW.
+    - Coins are generated only for the amount initially entered — no additional coins are created beyond that.
 - Machine returns the fewest number of coins possible. No bills
 - User add products with name, price, quantity.
-  - Product prices start at 100 and must be divisible by 10!.
+    - Product prices start at 100 and must be divisible by 10!.
 - Users can purchase products with the amount inserted.
-  - if the remaining balance is less than the price of the cheapest product, or all products sold out, the machine immediately returns change.
+    - if the remaining balance is less than the price of the cheapest product, or all products sold out, the machine
+      immediately returns change.
 - The machine returns as much as it can, using available coins.
-  - Any unreturned balance remains in the vending machine.
+    - Any unreturned balance remains in the vending machine.
 - Invalid input -> throw IllegalArg and re-prompt from the step.
 
 ## Features / Flow
@@ -55,8 +56,8 @@ Coins in the vending machine:
 ```
 
 - requirements:
-  - Start at 100
-  - divisible by 10
+    - Start at 100
+    - divisible by 10
 
 4. [ ] Input: Insert amount
 
@@ -65,9 +66,9 @@ Please enter the amount of money:
 ```
 
 - requirements:
-  - Returns change if:
-    - Remaining balance is less that the cheapest product available.
-    - All products sold out.
+    - Returns change if:
+        - Remaining balance is less that the cheapest product available.
+        - All products sold out.
 
 5. [ ] Output: display inserted amount
 
