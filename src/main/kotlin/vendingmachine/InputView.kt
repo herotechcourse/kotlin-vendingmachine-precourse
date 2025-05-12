@@ -80,7 +80,7 @@ object InputView {
             }
             return result
         } catch (e: NumberFormatException) {
-            throw IllegalArgumentException("[ERROR] Price and amount must be numbers.")
+            throw IllegalArgumentException("[ERROR] Price and amount must be valid numbers.")
         }
     }
 
