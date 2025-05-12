@@ -5,9 +5,6 @@ import vendingmachine.view.InputView
 fun main() {
     val inputView = InputView()
     val amount = retryUntilSuccess { inputView.inputAmount() }
-    val test = inputView.productInput()
-    println(test)
-
 }
 
 /**
