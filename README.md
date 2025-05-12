@@ -8,9 +8,11 @@ Intro: tbd
 
 The features will be implemented in the following order:
 
-- [ ] read change inventory amount from user input
-- [ ] generate random coins with `Randoms.pickNumberInList()` for inventory
-- [ ] print coins held by the vending machine
+- [x] read change inventory amount from user input
+  - [x] validate inventory amount is a number
+  - [x] validate inventory amount is divisible by 10
+- [x] generate random coins with `Randoms.pickNumberInList()` for inventory
+- [x] print coins held by the vending machine
 
 - [ ] read product names, prices, and quantities from user input
   - [ ] validate product prices
