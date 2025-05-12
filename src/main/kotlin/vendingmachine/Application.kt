@@ -3,8 +3,6 @@ fun paresDetails(input: String): List<String>{
     return input.split(",").map{it.trim()}
 }
 
-
-
 fun main(){
     println("Welcome to vending machine")
     println("Enter the amount the vending machine holds: ")
