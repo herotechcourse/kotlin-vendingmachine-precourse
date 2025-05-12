@@ -62,10 +62,12 @@ Input (4)-1
     
         Validate(4)-1
         1. Possible to divide by 10
-        2. Min. price of product: 100 
+        2. Min. price of product: 100
+        
+        Separte all items to each elements in list.
 
 Output (5)
-    \bPlease enter the amount of money:
+    \nPlease enter the amount of money:
     
 Input (5)-1
     3000 // Amount of wish purchase money (= purchasedMoney)

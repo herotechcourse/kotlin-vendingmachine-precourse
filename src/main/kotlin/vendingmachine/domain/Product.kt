@@ -1,7 +1,15 @@
 package vendingmachine.domain
 
 class Product ( feature: List<String> ) {
-    val Name = feature[0]
-    val price = feature[1]
-    val quantity = feature[2]
+    private val name = feature[0]
+    private val price = feature[1]
+    private val quantity = feature[2]
+
+    fun getName() = name
+    fun getPrice() = price.toInt()
+    fun getQuantity() = quantity
+
+    fun purchaseProduct() {
+        quantity.toInt() - 1
+    }
 }
