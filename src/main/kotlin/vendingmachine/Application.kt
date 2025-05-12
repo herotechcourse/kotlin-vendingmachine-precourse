@@ -29,6 +29,12 @@ fun main() {
     val minPrice = getCheapestPrice(products)
     executePurchase(minPrice, vendingMachine, products)
 
+    val change = vendingMachine.calculateChange()
+    OutputView.printChange(change)
+
+    if (vendingMachine.userBalance > 0) {
+        println("Unable to return: ${vendingMachine.userBalance} KRW")
+    }
 }
 
 fun getPurchaseFromProducts(products: List<Product>, purchase: String): Product? {
@@ -58,9 +64,7 @@ fun executePurchase(minPrice: Int, vendingMachine: VendingMachine, products: Lis
             println("[ERROR] Product is not supported by vending machine.")
         } else {
             vendingMachine.userBalance -= product.price
-            if (vendingMachine.userBalance >= minPrice) {
-                println("Inserted amount: ${vendingMachine.userBalance} KRW")
-            }
+            println("Inserted amount: ${vendingMachine.userBalance} KRW")
         }
     }
 }

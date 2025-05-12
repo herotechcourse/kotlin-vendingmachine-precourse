@@ -33,7 +33,7 @@ balance is smaller than cheapest product's price
         - [ ] re-prompt the user for input after an error
     - [ ] ensure error messages follow the format: `[ERROR] <message>`
 
-- [ ] calculate change as fewest number of coins possible
-- [ ] print change returned
-- [ ] print change unable to return if any
+- [x] calculate change as fewest number of coins possible
+- [x] print change returned
+- [x] print change unable to return if any
 
