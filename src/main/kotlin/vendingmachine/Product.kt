@@ -5,6 +5,11 @@ class Product(
     val price: Int,
     private var quantity: Int,
 ) {
+
+    fun getQuantity(): Int {
+        return quantity
+    }
+
     fun isProductAvailable(): Boolean {
         return quantity > 0
     }
