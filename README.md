@@ -37,11 +37,11 @@ Coins are generated randomly and users can add and purchase products to/from the
 
 #### Vending Machine
 - [ ]  Implement a vending machine that returns change using the fewest number of coins possible
-- [ ]  The machine randomly generates coins using the initial amount provided
-  - [ ]  Only 500 KRW, 100 KRW, 50 KRW, and 10 KRW coins are used.
-  - [ ]  Coins are generated only for the amount initially entered — no additional coins are created beyond that
-  - [ ]  amount should be divisible by 10
-  - [ ]  amount cannot be 0
+- [x]  The machine randomly generates coins using the initial amount provided
+  - [x]  Only 500 KRW, 100 KRW, 50 KRW, and 10 KRW coins are used.
+  - [x]  Coins are generated only for the amount initially entered — no additional coins are created beyond that
+  - [x]  amount should be divisible by 10
+  - [x]  amount cannot be 0
 
 #### Change
 - [ ]  When returning change, the machine uses the **fewest number of coins** possible from its current coin inventory
