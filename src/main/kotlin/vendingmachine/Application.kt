@@ -1,27 +1,71 @@
-package vendingmachine
+package newvendingMachine
+
+import vendingmachine.InputView.getBalanceAmount
+import vendingmachine.InputView.getChangeInventory
+import vendingmachine.InputView.getProducts
+import vendingmachine.InputView.getPurchase
+import vendingmachine.OutputView.announceCoinsInVendingMachine
+import vendingmachine.OutputView.printChange
+import vendingmachine.OutputView.printUnableToReturn
+import vendingmachine.Product
+import vendingmachine.VendingMachine
 
 fun main() {
-    // TODO: Implement the program
-val prouctDetail= ProuctDetail()
-    prouctDetail.getProductName()
+    val vendingMachine = initializeVendingMachine()
+    val products = getProducts()
 
-    val initialAmount = InputView.initialAmountInput()
+    processPurchases(vendingMachine, products)
+    processChange(vendingMachine)
+}
 
-// println(initialAmount)
-// val vendingMachine = VendingMachine()
-// val coins = vendingMachine.initialCoinsInMachine(initialAmount)    println(coins.entries)//
-// InputView.productDetailsInput()//
-// println(InputView.productPurchaseAmountInput())//
-// println(InputView.productPurchaseName(initialAmount))
-
-  val balanceAmount = BalanceAmount()
-    balanceAmount.readBalanceAmount()
-
-    val vendingMachine = VendingMachine(changeInventory)
+fun initializeVendingMachine(): VendingMachine {
+    val vendingMachine = VendingMachine(getChangeInventory())
     vendingMachine.getRandomCoins()
+    announceCoinsInVendingMachine(vendingMachine)
+    return vendingMachine
+}
 
+fun processPurchases(vendingMachine: VendingMachine, products: List<Product>) {
+    vendingMachine.userBalance = getBalanceAmount()
+    println("Inserted amount: ${vendingMachine.userBalance} KRW")
 
+    executePurchase(getCheapestPrice(products), vendingMachine, products)
+}
 
+fun processChange(vendingMachine: VendingMachine) {
+    val change = vendingMachine.calculateChange()
+    printChange(change)
+    printUnableToReturn(vendingMachine.userBalance)
+}
 
+fun getPurchaseFromProducts(products: List<Product>, purchase: String): Product? {
+    for (product in products) {
+        if (product.name == purchase)
+            return product
+    }
+    return null
+}
+
+fun getCheapestPrice(products: List<Product>): Int {
+    var min = products[0].price
+    for (product in products) {
+        if (product.price < min)
+            min = product.price
+    }
+    return min
+}
+
+fun executePurchase(minPrice: Int, vendingMachine: VendingMachine, products: List<Product>) {
+    while (vendingMachine.userBalance >= minPrice) {
+        val purchase = getPurchase()
+
+        val product = getPurchaseFromProducts(products, purchase)
+        if (product == null) {
+            println("[ERROR] Product is not supported by vending machine.")
+        } else {
+            vendingMachine.userBalance -= product.price
+            println("Inserted amount: ${vendingMachine.userBalance} KRW")
+        }
+    }
 }
 
