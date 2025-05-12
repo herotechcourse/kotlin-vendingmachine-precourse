@@ -3,13 +3,17 @@ package vendingmachine.controller
 import vendingmachine.view.InputView
 import vendingmachine.view.OutputView
 import vendingmachine.VendingMachine
+import vendingmachine.domain.CoinBalanceGenerator
 
 class VendingMachineController (
     private val inputView: InputView,
     private val outputView: OutputView
 ){
     fun run() {
-        createVendingMachine()
+        val vendingMachine = createVendingMachine()
+        val generator = CoinBalanceGenerator().balance
+        outputView.displayBalanceCoin(generator)
+
     }
 
     private fun createVendingMachine(): VendingMachine{

@@ -11,7 +11,7 @@
   - is valid digits
   - is greater than 10 (probably)
   - is divisible by 10 (probably)
-#### step2: coin balance of vending machine
+#### step2: each coin balance of vending machine
 - [ ] behavior : generateCoinBalance
   - function to use: Randoms.pickNumberInList() from camp.nextstep.edu.missionutils.Randoms.
   - prohibited: no additional coins beyond given CoinBalance

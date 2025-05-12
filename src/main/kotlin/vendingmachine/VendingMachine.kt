@@ -1,14 +1,14 @@
 package vendingmachine
 
-class VendingMachine(inputCoinBalance: String) {
-    val coinBalance: Int
+class VendingMachine(inputBalanceCoin: String) {
+    val balanceCoinSum: Int
 
     init {
-        require(inputCoinBalance.isNotBlank()) {INVALID_EMPTY_STRING}
-        coinBalance = inputCoinBalance.toIntOrNull()
+        require(inputBalanceCoin.isNotBlank()) {INVALID_EMPTY_STRING}
+        balanceCoinSum = inputBalanceCoin.toIntOrNull()
             ?: throw IllegalArgumentException(INVALID_DIGITS)
-        require(coinBalance >= COIN_UNIT) {INVALID_BELOW_MINIMUM}
-        require(coinBalance % COIN_UNIT == 0) {INVALID_NOT_DIVISIBLE}
+        require(balanceCoinSum >= COIN_UNIT) {INVALID_BELOW_MINIMUM}
+        require(balanceCoinSum % COIN_UNIT == 0) {INVALID_NOT_DIVISIBLE}
     }
 
     companion object {
