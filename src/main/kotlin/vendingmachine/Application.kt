@@ -42,7 +42,7 @@ fun addProducts(input : String){
 
 fun insertAmount(){
     println("Please enter the amount of money:")
-    val input = Console.readline()
+    val input = Console.readLine()
     insertedAmount = input.toIntorNull()?: throw IllegalArgumentException("[ERROR]")
     println ("inserted amount: ${insertedAmount} KRW")
 }
