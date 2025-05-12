@@ -5,13 +5,13 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
     // TODO: Implement the programs
-//    println("Enter the amount the vending machine holds:")
-//    val vendingAmount: Int = Console.readLine().toIntOrNull()
-//        ?: throw IllegalArgumentException("[ERROR] Please enter valid numbers separated by commas.")
-//    println("Enter product names, prices, and quantities:")
-//    val productInput: String = Console.readLine()
-//    println(validateProducts(productInput))
-//    println("Please enter the amount of money:")
+    println("Enter the amount the vending machine holds:")
+    val vendingAmount: Int = Console.readLine().toIntOrNull()
+        ?: throw IllegalArgumentException("[ERROR] Please enter valid numbers separated by commas.")
+    println("Enter product names, prices, and quantities:")
+    val productInput: String = Console.readLine()
+    println(validateProducts(productInput))
+    println("Please enter the amount of money:")
     val buyingAmount: Int? = Console.readLine().toIntOrNull()
     if (buyingAmount != null) {println(generateCoins(buyingAmount))}
 
