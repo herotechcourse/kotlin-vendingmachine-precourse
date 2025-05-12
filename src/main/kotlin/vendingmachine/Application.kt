@@ -17,6 +17,9 @@ val prouctDetail= ProuctDetail()
   val balanceAmount = BalanceAmount()
     balanceAmount.readBalanceAmount()
 
+    val vendingMachine = VendingMachine(changeInventory)
+    vendingMachine.getRandomCoins()
+
 
 
 
