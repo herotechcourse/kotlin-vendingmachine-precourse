@@ -41,7 +41,7 @@ class CoinMachine() {
         coinsCount.add(num50)
         coinsCount.add(num10)
 
-        
+        return coinsCount
 
     }
 
