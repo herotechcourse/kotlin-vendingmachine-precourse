@@ -25,8 +25,7 @@ object InputView {
         require(string.isNotEmpty() && string.startsWith('[') && string.endsWith(']')) {
             "[ERROR]: invalid input format"
         }
-        string.trim('[', ']')
-        val list = string.split(",")
+        val list = string.trim('[', ']').split(",")
         require(list.size == 3) { "[ERROR]: invalid input format" }
         for (elem in list) {
             require(elem.isNotEmpty()) { "[ERROR]: invalid input format" }
