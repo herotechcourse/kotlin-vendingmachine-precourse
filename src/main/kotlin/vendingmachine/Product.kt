@@ -5,4 +5,7 @@ class Product(
     val price: Int,
     val quantity: Int,
 ) {
+    fun isProductAvailable(): Boolean {
+        return quantity > 0
+    }
 }
