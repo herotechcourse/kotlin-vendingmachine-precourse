@@ -8,7 +8,7 @@ enum class Coin(val amount: Int) {
     NONE(0);
 
     companion object {
-        fun from(amount: Int):Coin{
+        fun from(amount: Int): Coin {
             return when {
                 amount >= 500 -> COIN_500
                 amount >= 100 -> COIN_100

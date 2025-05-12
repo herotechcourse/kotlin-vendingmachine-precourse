@@ -8,7 +8,7 @@ object InputView {
      * Only accepts values divisible by 10.
      * @return {amount} Int
      */
-    fun readValidVendingMachineAmount():Int {
+    fun readValidVendingMachineAmount(): Int {
         while (true) {
             try {
                 return readCurrency("Enter the amount the vending machine holds:")
@@ -18,7 +18,7 @@ object InputView {
         }
     }
 
-    fun readValidProducts():MutableMap<String, List<Int>>{
+    fun readValidProducts(): MutableMap<String, List<Int>> {
         while (true) {
             try {
                 return readProducts()
@@ -38,7 +38,7 @@ object InputView {
         }
     }
 
-    fun readValidProductName():String{
+    fun readValidProductName(): String {
         while (true) {
             try {
                 return readProductName()
@@ -48,13 +48,13 @@ object InputView {
         }
     }
 
-    private fun readProducts():MutableMap<String, List<Int>> {
+    private fun readProducts(): MutableMap<String, List<Int>> {
         println("Enter product names, prices, and quantities:")
         val input = Console.readLine()
         return InputValidator.parseProducts(input)
     }
 
-    private fun readCurrency(inputMessage:String):Int{
+    private fun readCurrency(inputMessage: String): Int {
         println(inputMessage)
         val input = Console.readLine()
         val amount = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be a valid number.")
@@ -62,7 +62,7 @@ object InputView {
         return amount
     }
 
-    private fun readProductName():String {
+    private fun readProductName(): String {
         println("Please enter the name of the product to purchase:")
         val input = Console.readLine()
         return input

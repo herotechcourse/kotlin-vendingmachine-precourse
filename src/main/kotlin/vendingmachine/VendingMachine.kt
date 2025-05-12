@@ -7,11 +7,15 @@ class VendingMachine() {
     var vendingBalance = 0
     var userBalance = 0
 
-    fun setBalance(amount:Int) {
+    fun setBalance(amount: Int) {
         userBalance = amount
     }
 
-    fun generateCoins(amount:Int){
+    fun reduceUserBalance(price: Int) {
+        userBalance -= price
+    }
+
+    fun generateCoins(amount: Int) {
         vendingBalance = amount
         var totalAmount = amount
         while (totalAmount >= 10) {
@@ -25,7 +29,7 @@ class VendingMachine() {
         }
     }
 
-    fun returnCoins(){}
+    fun returnCoins() {}
 
     private fun record(rank: Coin) {
         resultMap[rank] = resultMap.getOrDefault(rank, 0) + 1
