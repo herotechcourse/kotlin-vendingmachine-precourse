@@ -17,7 +17,7 @@ object InputView {
 
     fun handleInitialAmountInput() : Int {
         val initAmount = getInitialAmount()
-        return (validateInitialAmount(initAmount))
+        return (validateInitialAmountInput(initAmount))
     }
 
     private fun getProductsInventory() : String {
@@ -40,7 +40,7 @@ object InputView {
     }
 
     private fun validateProducts(productString : String) : List<String> {
-        var productList = ListOf<String>()
+        var productList = listOf<String>()
         if (productString[0] == '[' && productString[productString.length - 1] == ']') {
             productString.removePrefix("[")
             productString.removeSuffix("]")
