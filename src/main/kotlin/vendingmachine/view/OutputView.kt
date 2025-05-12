@@ -13,7 +13,7 @@ object OutputView {
     }
 
     fun printInsertedAmount(amount: Int) {
-        println("Inserted amount: ${amount} KRW")
+        println("Inserted amount: ${amount}KRW")
     }
 
     fun printChange(change: Map<Coin, Int>, unreturnable: Int) {
