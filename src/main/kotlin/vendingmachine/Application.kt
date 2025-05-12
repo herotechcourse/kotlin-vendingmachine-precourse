@@ -1,9 +1,13 @@
 package vendingmachine
 
 import vendingmachine.utils.InputView
+import vendingmachine.utils.OutputView
 
 fun main() {
 
     val machineAmountHold = InputView.readVendorMachineMoney()
-    println(machineAmountHold)
+
+    val machineCoinsHold = VendorMachineCoinsFactory.generateRandomCoins(machineAmountHold)
+    OutputView.displayCoins(machineCoinsHold)
+
 }
