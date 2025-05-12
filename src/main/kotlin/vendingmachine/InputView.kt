@@ -31,6 +31,8 @@ object InputView {
             val productPrice = productInfo[1]
                 .toIntOrNull()
                 ?: throw IllegalArgumentException("[ERROR] Invalid input.")
+            require(productPrice % 10 == 0) { "[ERROR] Invalid input." }
+            require(productPrice > 100) { "[ERROR] Invalid input." }
             val productQuantity = productInfo[2]
                 .toIntOrNull()
                 ?: throw IllegalArgumentException("[ERROR] Invalid input.")
