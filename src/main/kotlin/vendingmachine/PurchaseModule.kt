@@ -30,7 +30,7 @@ class PurchaseModule(val productInventory: ProductInventory, var coinRepository:
 		var currCoin = 500
 		while (balance > 0) {
 			if (coinRepository.coins[currCoin]!! >= 1) {
-				changeMap[currCoin] = max(balance.floorDiv(currCoin), coinRepository.coins[currCoin]!!)
+				changeMap[currCoin] = min(balance.floorDiv(currCoin), coinRepository.coins[currCoin]!!)
 				balance -= changeMap[currCoin]!! * currCoin
 			}
 
