@@ -9,7 +9,7 @@ object InputView {
         val input = Console.readLine()?.trim() ?: throw InvalidInputException()
         if (input.isEmpty()) throw InvalidInputException()
         val amount =  input.toIntOrNull() ?: throw InvalidInputException()
-        if (amount < 0) throw InvalidInputException()
+        if (amount < 10) throw InvalidInputException()
         return amount
     }
 
