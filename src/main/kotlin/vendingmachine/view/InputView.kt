@@ -4,11 +4,10 @@ import camp.nextstep.edu.missionutils.Console
 
 class InputView {
 
-    fun getAmountInfo(){
+    fun getVMAmount(): Int{
         print("Enter the amount the vending machine holds: ")
-        val amount = Console.readLine().toIntOrNull()
-            ?: throw IllegalArgumentException("The amount must be an integer.")
-
+        return Console.readLine().toIntOrNull()
+            ?: throw IllegalArgumentException("[ERROR] Amount of coins available in VM must be an integer.")
     }
 
     fun getProduct(){
@@ -18,20 +17,50 @@ class InputView {
         productList.forEach { getProductDetails(it) }
     }
 
-    private fun getProductsList(productNameStr: String): List<String> {
-        val productList = productNameStr.split(";")
-            .map { it.trim() }
-        return productList
+    fun getInitialMoney(): Int{
+        println("Please enter the amount of money:")
+        val initialMoney = Console.readLine().toIntOrNull()
+            ?: throw IllegalArgumentException("[ERROR] Amount must be an integer.")
+        validateInitialMoney(initialMoney)
+        return initialMoney
     }
 
-    private fun getProductDetails(productList: String): List<String>{
-         return productList.split(",", "[", "]")
-            .map { it.trim()}
+    fun getRequestedProducts(){
+        println("Please enter the name of the product to purchase: ")
+        val product = Console.readLine()
+
     }
 
-    data class ProductDetails(
-                            val name: String,
-                            val price: Int,
-                            val quantity: Int
-    )
+    companion object {
+        private fun validateInitialMoney(initialMoney: Int){
+            if(initialMoney < 0)
+                throw IllegalArgumentException("[ERROR] Amount must be non-negative integer")
+            if(initialMoney%10 != 0)
+                throw IllegalArgumentException("[ERROR] Amount must be divisible by 10")
+        }
+
+        private fun validateAmount(){
+
+        }
+        private fun validateProductDetails(){
+
+        }
+
+        private fun getProductsList(productNameStr: String): List<String> {
+            val productList = productNameStr.split(";")
+                .map { it.trim() }
+            return productList
+        }
+
+        private fun getProductDetails(productList: String): List<String> {
+            return productList.split(",", "[", "]")
+                .map { it.trim() }
+        }
+
+        data class ProductDetails(
+            val name: String,
+            val price: Int,
+            val quantity: Int
+        )
+    }
 }
