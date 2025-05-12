@@ -1,6 +1,7 @@
 package vendingmachine.utils
 
 import camp.nextstep.edu.missionutils.Console
+import vendingmachine.core.Product
 
 object InputView {
 
@@ -26,5 +27,51 @@ object InputView {
         require(moneyHold % 10 == 0) {"[Error] Amount must be divisible by 10"}
         return moneyHold
     }
+
+    fun readProductNamePriceQuantity(): List<Product> {
+        while (true) {
+            try {
+                println("\nEnter product names, prices, and quantities:")
+                val input = Console.readLine()?: throw IllegalArgumentException("[ERROR] Input cannot be empty")
+                return parseProductNamePriceQuantity(input)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+
+        }
+    }
+
+    private fun parseProductNamePriceQuantity(
+        input: String
+    ): List<Product> {
+
+        val productsList = mutableListOf<Product>()
+
+        val productString = input.split(";")
+        productString.forEach {
+            val productString = it.replace("[", "").replace("]","").trim().split(",")
+
+            require(productString.size == 3) {"[ERROR] Invalid input"}
+
+            val name = productString.getOrNull(0)?: throw IllegalArgumentException ("[ERROR] Name input invalid")
+            val price = productString.getOrNull(1)
+                ?.toIntOrNull()
+                ?: throw IllegalArgumentException ("[ERROR] Price input invalid")
+            require(price >= 100) {throw IllegalArgumentException ("[ERROR] Product price must start at 100 KRW and be divisible by 10") }
+            require(price % 10 == 0) {throw IllegalArgumentException ("[ERROR] Product price must start at 100 KRW and be divisible by 10") }
+            val quantity = productString.getOrNull(2)
+                ?.toIntOrNull()
+                ?: throw IllegalArgumentException ("[ERROR] Quantity input invalid")
+
+            val product = Product(
+                name,
+                price,
+                quantity
+            )
+            productsList.add(product)
+        }
+        return productsList
+    }
+
 
 }

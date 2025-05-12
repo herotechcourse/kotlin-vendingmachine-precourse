@@ -10,4 +10,9 @@ fun main() {
     val machineCoinsHold = VendorMachineCoinsFactory.generateRandomCoins(machineAmountHold)
     OutputView.displayCoins(machineCoinsHold)
 
+    val products = InputView.readProductNamePriceQuantity()
+
+    products.forEach { println(it.toString()) }
+
+
 }
