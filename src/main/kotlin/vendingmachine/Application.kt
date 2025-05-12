@@ -2,6 +2,7 @@ package vendingmachine
 
 import camp.nextstep.edu.missionutils.Console 
 import camp.nextstep.edu.missionutils.Randoms
+import vendingmachine.coin
 
 fun main() {
     class VendingMachine(private var initialAmount:Int) {
@@ -48,13 +49,13 @@ fun insertAmount(){
 }
   fun purchaseLoop (){
 while (true){
-    if (products.values.all {it.quantity == 0} || insertAmount < products.values.filter {it.quantity > 0} .minOforNull {it.price} ? : Int.MAX_VALUE){
+    if (products.values.all {it.quantity == 0} || insertedAmount < products.values.filter {it.quantity > 0}.minOforNull {it.price} ?: Int.MAX_VALUE){
 returnChange()
 break
     }
     println (" please enter the name of the product to purchase:")
     val name = Console.readLine()
-    val product = products[name]? : throw IllegalArgumentException("[ERROR]")
+    val product = products[name];? : throw IllegalArgumentException("[ERROR]")
     if (product.quantity == 0) throw IllegalArgumentException("[ERROR]")
     if (insertedAmount < product.price)throw IllegalArgumentException("[ERROR]")
 
@@ -90,6 +91,7 @@ private fun printCoins(){
         println ("${coin.amount} KRW = ${coinInventory[coin]}")
     }
 }
-  }      
+}
+      
     
 
