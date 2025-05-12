@@ -1,3 +1,5 @@
 package vendingmachine.exception
 
-class VendingMachineException(message: String): IllegalArgumentException("[ERROR] $message")
+sealed class VendingMachineException(message: String): IllegalArgumentException("[ERROR] $message") {
+    class InvalidInputException(): VendingMachineException("Invalid Input.")
+}
