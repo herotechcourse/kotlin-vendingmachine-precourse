@@ -20,9 +20,13 @@ object InputView {
         println ("\nEnter product names, prices, and quantities:")
         val input = Console.readLine()
         val allProducts = input.split(";")
-        for (product in allProducts) {
-            println(product)
+        val productList = mutableListOf<Product>()
+        for (product in allProducts)
+        {
+            val productDetails = product.replace("[","").replace("]","").split(",")
+            productList.add(Product(productDetails[0], productDetails[1].toInt(), productDetails[2].toInt()))
         }
+        //println(productList[0].toString())
         //Product price should be greater than 100 and divisible by 10
     }
 

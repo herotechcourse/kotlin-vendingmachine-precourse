@@ -5,7 +5,7 @@ fun main() {
     val vendingMachine = VendingMachine()
     val coins = vendingMachine.initialCoinsInMachine(initialAmount)
     OutputView.printCoinsInMachine(coins)
-//    InputView.productDetailsInput()
+    InputView.productDetailsInput()
 //    println(InputView.productPurchaseAmountInput())
 //    println(InputView.productPurchaseName(initialAmount))
 }
