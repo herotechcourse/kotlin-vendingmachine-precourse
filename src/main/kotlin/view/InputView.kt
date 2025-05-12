@@ -1,6 +1,7 @@
 package view
 
 import camp.nextstep.edu.missionutils.Console
+import vendingmachine.Product
 
 object InputView {
 
@@ -41,6 +42,54 @@ object InputView {
         while (true) {
             try {
                 return readAndValidateChangeInventory()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
+
+    private fun tryToProduct(input: String): Product {
+        val product = input.removeSurrounding("[", "]").split(",")
+        val name = product[0]
+        val price = product[1].toInt()
+        val quantity = product[2].toInt()
+        return Product(name, price, quantity)
+    }
+
+    // TODO: refactor, max 10 lines
+    private fun tryToProducts(input: String): List<Product> {
+        val result = mutableListOf<Product>()
+        try {
+            val products = input.split(";")
+            for (product in products) {
+                result.add(tryToProduct(product))
+            }
+            return result
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("[ERROR] Price and amount must be numbers.")
+        }
+    }
+
+    private fun validatePrices(products: List<Product>) {
+        for (product in products) {
+            if (product.price < 100 || product.price % 10 != 0)
+                throw IllegalArgumentException("[ERROR] Prices must be at least 100 KRW and multiples of 10.")
+        }
+    }
+
+    private fun readAndValidateProducts(): List<Product> {
+        println("Enter product names, prices, and quantities:")
+        val input = readInput()
+        validateInputNotEmpty(input)
+        val products = tryToProducts(input)
+        validatePrices(products)
+        return products
+    }
+
+    fun getProducts(): List<Product> {
+        while (true) {
+            try {
+                return readAndValidateProducts()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }

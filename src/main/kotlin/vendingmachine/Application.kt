@@ -1,6 +1,7 @@
 package vendingmachine
 
 import view.InputView.getChangeInventory
+import view.InputView.getProducts
 import view.OutputView
 
 fun main() {
@@ -24,5 +25,6 @@ fun main() {
     OutputView.printNumberOfCoin(50, vendingMachine.numberOf50Coin)
     OutputView.printNumberOfCoin(10, vendingMachine.numberOf10Coin)
 
-
+    val products = getProducts()
+//    println(products)
 }

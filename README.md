@@ -14,10 +14,11 @@ The features will be implemented in the following order:
 - [x] generate random coins with `Randoms.pickNumberInList()` for inventory
 - [x] print coins held by the vending machine
 
-- [ ] read product names, prices, and quantities from user input
-  - [ ] validate product prices
-    - [ ] product prices start at 100 KRW 
-    - [ ] product prices must be divisible by 10
+- [x] read product names, prices, and quantities from user input
+  - [x] validate product prices
+    - [x] product prices start at 100 KRW 
+    - [x] product prices must be divisible by 10 (assumption)
+
 - [ ] read amount of money from user input
 - [ ] print inserted amount
 
