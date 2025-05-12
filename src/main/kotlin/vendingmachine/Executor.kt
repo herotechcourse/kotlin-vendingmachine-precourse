@@ -3,7 +3,7 @@ package vendingmachine
 class Executor() {
     fun run() {
         val machine = createMachine()
-        //readInventory()
+        readInventory(machine)
         readPurchaseAmount(machine)
         purchase(machine)
     }
@@ -21,14 +21,25 @@ class Executor() {
         }
     }
 
-    private fun readInventory() {
+    private fun readInventory(machine: VendingMachine) {
         while (true) {
             try {
-                InputView.getInventory()
+                val inventory = InputView.getInventory()
+                parseInventory(inventory, machine)
                 return
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
+        }
+    }
+
+    private fun parseInventory(inventory: List<List<String>>, machine: VendingMachine) {
+        for (elem in inventory) {
+            val productName = elem[0]
+            val price = elem[1].toIntOrNull() ?: throw IllegalArgumentException("[ERROR]: int required")
+            val quantity = elem[2].toIntOrNull() ?: throw IllegalArgumentException("[ERROR]: int required")
+            val product = Product(productName, price, quantity)
+            machine.addProduct(product)
         }
     }
 
@@ -45,7 +56,15 @@ class Executor() {
 
     private fun purchase(machine: VendingMachine) {
         OutputView.displayInsertedAmount(machine.budget)
-        InputView.getProductName()
+        while (true) {
+            try {
+                InputView.getProductName()
+                break
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+
     }
 
     companion object {
