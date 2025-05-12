@@ -3,7 +3,7 @@ package vendingmachine.presentation
 interface OutputView {
 
     fun printInputPrompt(promptMessage: String)
-    fun printErrorMessage(errorMessage: String)
+    fun printErrorMessage(errorMessage: String?)
     fun printMachineCoins()
     fun printCurrentBalance(currentBalance: Int)
     fun printReturnedChange()
@@ -17,7 +17,7 @@ class OutputViewImpl : OutputView {
         println(promptMessage)
     }
 
-    override fun printErrorMessage(errorMessage: String) {
+    override fun printErrorMessage(errorMessage: String?) {
         println("$ERROR_MESSAGE_PREFIX $errorMessage")
     }
 
