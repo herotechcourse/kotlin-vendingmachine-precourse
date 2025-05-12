@@ -8,4 +8,8 @@ object OutputView {
             println("${coin.key} - ${coin.value}")
         }
     }
+
+    fun insertedAmount(amount: Int) {
+        println("Inserted amount: ${amount} KWR")
+    }
 }
