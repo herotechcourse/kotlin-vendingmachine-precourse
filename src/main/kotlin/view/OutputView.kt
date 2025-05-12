@@ -1,9 +1,15 @@
 package view
 
+import vendingmachine.VendingMachine
+
 object OutputView {
 
-    fun announceCoinsInVendingMachine() {
+    fun announceCoinsInVendingMachine(vendingMachine: VendingMachine) {
         println("Coins in the vending machine:")
+        printNumberOfCoin(500, vendingMachine.numberOf500Coin)
+        printNumberOfCoin(100, vendingMachine.numberOf100Coin)
+        printNumberOfCoin(50, vendingMachine.numberOf50Coin)
+        printNumberOfCoin(10, vendingMachine.numberOf10Coin)
     }
 
     fun printNumberOfCoin(coin: Int, number: Int) {
@@ -15,6 +21,7 @@ object OutputView {
         }
     }
 
+    // TODO: reactor, max 10 lines
     fun printChange(change: List<Int>) {
         println("Change returned:")
         if (change[0] != 0) {
@@ -31,4 +38,7 @@ object OutputView {
         }
     }
 
+    fun printUnableToReturn(amount: Int) {
+        println("Unable to return: $amount KRW")
+    }
 }

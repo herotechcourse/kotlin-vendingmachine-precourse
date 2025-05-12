@@ -2,7 +2,8 @@
 
 This is the submission for the final coding test for the "Hero Tech Course: Berlin Edition" by [Deniz](https://github.com/deniz-oezdemir).
 
-Intro: tbd
+This project is a console-based vending machine simulation. After the user inputs the machine's change and product details,
+the user can make purchases as long as he has sufficient funds. The program execution ends with the machine then calculating the change.
 
 ## feature list
 
@@ -28,12 +29,26 @@ The features will be implemented in the following order:
 - [x] repeat reading product to purchase from user input until
 balance is smaller than cheapest product's price
 
-- [ ] for each user input above:
-    - [ ] handle invalid user input by throwing an `IllegalArgumentException`
-        - [ ] re-prompt the user for input after an error
-    - [ ] ensure error messages follow the format: `[ERROR] <message>`
+- [x] for each user input above:
+    - [x] handle invalid user input by throwing an `IllegalArgumentException`
+        - [x] re-prompt the user for input after an error
+    - [x] ensure error messages follow the format: `[ERROR] <message>`
 
 - [x] calculate change as fewest number of coins possible
 - [x] print change returned
 - [x] print change unable to return if any
 
+## learnings
+- the contents of `data classes` are automatically printed in a convenient format
+- `toInt` throws a `numberformatexception` if its execution is invalid
+
+## future work
+I have not implemented the following due to time constraints:
+
+- check whether the product the user wants to purchase is still in stock in the vending machine
+- refactor functions longer than 10 lines
+- refactor main function with the use of a `Controller` class
+
+## sources
+- https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/remove-surrounding.html
+- https://stackoverflow.com/questions/33278869/how-do-i-initialize-kotlins-mutablelist-to-empty-mutablelist
