@@ -4,31 +4,46 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class VendorLogic {
 
-    fun generateCoins(): Int {
-        val coinsList = mutableListOf(500, 100, 50, 10)
+    fun generateCoins(coinsList: List<Int>): Int {
         val generateCoin = Randoms.pickNumberInList(coinsList)
         return generateCoin
     }
 
     fun generateListOfCoins(amount: Int): MutableList<Int> {
+        val coins = listOf<Int>( 500, 100, 50, 10 )
         val coinsList = mutableListOf<Int>()
         var count = 0
-        do {
-            val coin = generateCoins()
-            coinsList.add(coin)
-            count += coin
 
-        } while (count != amount)
-        println("count: $count")
+        for (item in coins) {
+            if (count != amount) {
+                while (true) {
+                    val coin = generateCoins(coins)
+                    val sum = count + coin
+                    if (sum > amount) {
+                        val rest = amount - count
+                        val coinsRestList = coins.filter{it <= rest}
+                        val coinsRest = generateCoins(coinsRestList)
+                        count += coinsRest
+                    } else {
+                        coinsList.add(coin)
+                        count += coin
+                        println("count: $count")
+                    }
+                }
+            } else {
+                break
+            }
+        }
+
         println("coinsList: $coinsList")
-
         return coinsList
     }
 
-    fun generateListOfProducts(productDescription: MutableList<String>):
-            MutableList<MutableList<String>> {
-        val listOfProducts = mutableListOf<MutableList<String>>()
-        listOfProducts.add(productDescription)
+    fun generateListOfProducts(name: String, price: String, quantity: String): MutableList<String> {
+        val listOfProducts = mutableListOf<String>()
+        listOfProducts.add(name)
+        listOfProducts.add(price)
+        listOfProducts.add(quantity)
         return listOfProducts
     }
 }
