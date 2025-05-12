@@ -32,7 +32,33 @@ Coins are generated randomly and users can add and purchase products to/from the
   - [ ] display a message if the balance and therefor the amount of change is 0
 
 ### Business Logic
+#### Validates Input
+- [ ] If the user inputs invalid data, the program must throw an `IllegalArgumentException` and re-prompt input from that step.
 
+#### Vending Machine
+- [ ]  Implement a vending machine that returns change using the fewest number of coins possible
+- [ ]  The machine randomly generates coins using the initial amount provided
+  - [ ]  Only 500 KRW, 100 KRW, 50 KRW, and 10 KRW coins are used.
+  - [ ]  Coins are generated only for the amount initially entered — no additional coins are created beyond that
+  - [ ]  amount should be divisible by 10
+  - [ ]  amount cannot be 0
+
+#### Change
+- [ ]  When returning change, the machine uses the **fewest number of coins** possible from its current coin inventory
+  - [ ]  It is assumed that bills are not used for change
+
+#### Products
+- [ ]  Users can add products to the machine by specifying the product name, price, and quantity.
+  - [ ]  Product prices start at 100 KRW and must be divisible by 10.
+  - [ ]  ? max amount of products?
+
+#### Purchase and Returning Change
+- [ ]  Users can purchase products using the amount they have inserted.
+- [ ]  program re-prompts until money is more or equal to the cheapest
+- [ ]  If the remaining balance is less than the price of the cheapest available product, or if all products are sold out, the machine immediately returns change.
+- [ ]  If the machine cannot return the full amount in change, it returns as much as it can, using available coins.
+  - [ ]  Any unreturned balance remains in the vending machine.
+  - [ ]  ?output message if balance is 0 and no change is needed?
 
 
 
