@@ -81,7 +81,8 @@ class VendingMachineController {
         var currentAmount = totalAmount
         
         while (currentAmount > minimumCost) {
-            val productName = InputView.enterPurchasingItem(currentAmount)
+            OutputView().displayInsertedAmount(currentAmount)
+            val productName = InputView.enterPurchasingItem()
 
             val product = products.first { it.getName() == productName }
 
@@ -91,6 +92,8 @@ class VendingMachineController {
 
         return currentAmount
     }
+
+    
 
     fun getMinimumCost(products: List<Product>) : Int {
         return products.minOf { it.getCost() }

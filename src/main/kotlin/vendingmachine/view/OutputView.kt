@@ -9,6 +9,10 @@ class OutputView {
         println("Entered Amount: ${input}")
     }
 
+    fun displayInsertedAmount(amount: Int) {
+        println("Inserted amount: ${amount} KRW")
+    }
+
     fun displayCoinChanges(coins: MutableList<Coin>){
         println("Coins in the vending machine:")
         

@@ -34,8 +34,7 @@ object InputView{
         return products
     }
 
-    fun enterPurchasingItem(currentAmount: Int): String {
-        println("Inserted amount: ${currentAmount} KRW")
+    fun enterPurchasingItem(): String {
         println("Please enter the name of the product to purchase:")
         
         val productName = Console.readLine().trim()
