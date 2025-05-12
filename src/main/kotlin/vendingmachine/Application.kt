@@ -13,10 +13,6 @@ fun main() {
 
     val products = InputView.readProductNamePriceQuantity()
 
-    products.forEach { println(it.toString()) }
-
-
-
     val vendorMachine = VendorMachine(
         machineAmountHold,
         machineCoinsHold,

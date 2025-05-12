@@ -25,12 +25,12 @@ class VendorMachine(
 
             if (productWanted == null) throw IllegalArgumentException ("[Error] Product not found")
 
-            if (productWanted.price < products.minOf { it.price }) {
+            if (remainingUserMoneyAmount < products.minOf { product -> product.price }) {
                 giveRest()
                 break
             }
 
-            if (productWanted.price < remainingUserMoneyAmount && productWanted.quantity > 0) {
+            if (productWanted.price > remainingUserMoneyAmount || productWanted.quantity > 0) {
                 productWanted.reduceQuantity()
                 remainingUserMoneyAmount -= productWanted.price
                 continue
