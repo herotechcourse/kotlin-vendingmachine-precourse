@@ -8,7 +8,9 @@ object InputView {
         println(Constants.VENDING_AMOUNT_PROMPT)
         val input = Console.readLine()?.trim() ?: throw InvalidInputException()
         if (input.isEmpty()) throw InvalidInputException()
-        return input.toIntOrNull() ?: throw InvalidInputException()
+        val amount =  input.toIntOrNull() ?: throw InvalidInputException()
+        if (amount < 0) throw InvalidInputException()
+        return amount
     }
 
     fun readProducts(): List<String> {
