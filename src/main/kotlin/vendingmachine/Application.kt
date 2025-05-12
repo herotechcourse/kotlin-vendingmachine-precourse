@@ -11,14 +11,14 @@ import vendingmachine.Product
 import vendingmachine.VendingMachine
 
 fun main() {
-    val vendingMachine = initializeVendingMachine()
+    val vendingMachine = initVendingMachine()
     val products = getProducts()
 
     processPurchases(vendingMachine, products)
     processChange(vendingMachine)
 }
 
-fun initializeVendingMachine(): VendingMachine {
+fun initVendingMachine(): VendingMachine {
     val vendingMachine = VendingMachine(getChangeInventory())
     vendingMachine.getRandomCoins()
     announceCoinsInVendingMachine(vendingMachine)
