@@ -3,7 +3,7 @@ package vendingmachine.service
 import vendingmachine.view.InputView
 import vendingmachine.view.OutputView
 
-import vendingmachine.domain.machineProducts
+import vendingmachine.domain.MachineProducts
 
 object VendingMachineSetting {
     fun run() {
@@ -12,7 +12,7 @@ object VendingMachineSetting {
         OutputView.coinsVendingMachine(machine.getCoinInventory())
 
         val productInputs = InputView.readProducts()
-        val products = machineProducts.generateProducts(productInputs)
+        val products = MachineProducts.generateProducts(productInputs)
         machine.addProducts(products)
 
         val insertedAmount = InputView.readAmountOfMoneyInserted()
