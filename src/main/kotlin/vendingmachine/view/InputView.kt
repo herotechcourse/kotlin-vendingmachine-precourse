@@ -22,10 +22,10 @@ class InputView {
         val groupOfProducts = input.split(";").map { it.trim() }
         for ( x in groupOfProducts) {
             val itemsList = x.replace("[", "").replace("]", "").split(",").map { it.trim() }
-            println(itemsList)
         }
 
         return groupOfProducts
     }
 
 }
+
