@@ -18,8 +18,12 @@
   - initiation
     - generating amounts of coin randomly
       - No additional coins created
+  - return condition
+    - if the remaining balance is less than the price of the cheapest available product
+    - if all products are sold out
   - returning change
     - use the fewest number of coins
+      - calculate fewest solution to return change
     - if cannot return the full amount
       - return as much as possible
       - display amount that unreturned
