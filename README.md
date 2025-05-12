@@ -7,12 +7,12 @@ Coins are generated randomly and users can add and purchase products to/from the
 
 ### UI
 #### User Input
-- [ ] initial amount of money the vending machine holds
-- [ ] product names, prices, and quantities in the following format: <br/>
+- [x] initial amount of money the vending machine holds
+- [x] product names, prices, and quantities in the following format: <br/>
 `[Cola,1500,20];[Soda,1000,10]`
-- [ ] amount of money for buying products
-- [ ] name(s) of the product(s) to purchase
-- [ ] on **invalid input**, IllegalArgumentException is thrown followed by a message: <br/>
+- [x] amount of money for buying products
+- [x] name(s) of the product(s) to purchase
+- [x] on **invalid input**, IllegalArgumentException is thrown followed by a message: <br/>
 `[ERROR]: {error message}`
 
 #### Output
