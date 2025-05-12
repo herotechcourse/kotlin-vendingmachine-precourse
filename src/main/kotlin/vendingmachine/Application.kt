@@ -1,5 +1,9 @@
 package vendingmachine
 
+import vendingmachine.controller.VendingMachine
+
 fun main() {
-    // TODO: Implement the program
+    val vendingMachine = VendingMachine()
+
+    vendingMachine.run()
 }
