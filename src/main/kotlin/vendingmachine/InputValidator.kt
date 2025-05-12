@@ -17,7 +17,7 @@ object InputValidator {
     }
 
     fun getValidProducts(): List<String> {
-        println("Enter product names, prices, and quantities:")
+        println("Enter product names, prices, and quantities, separated with a space:")
         val input = Console.readLine()
         val products = input.split(' ').toList()
         return products
