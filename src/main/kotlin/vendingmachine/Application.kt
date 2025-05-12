@@ -6,12 +6,12 @@ import camp.nextstep.edu.missionutils.Console
 fun main() {
     // TODO: Implement the programs
     println("Enter the amount the vending machine holds:")
-    val vendingAmount: Int = Console.readLine().toIntOrNull()
-        ?: throw IllegalArgumentException("[ERROR] Please enter valid numbers separated by commas.")
-    println("Enter product names, prices, and quantities:")
-    val productInput: String = Console.readLine()
-    println(validateProducts(productInput))
-    println("Please enter the amount of money:")
+//    val vendingAmount: Int = Console.readLine().toIntOrNull()
+//        ?: throw IllegalArgumentException("[ERROR] Please enter valid numbers separated by commas.")
+//    println("Enter product names, prices, and quantities:")
+//    val productInput: String = Console.readLine()
+//    println(validateProducts(productInput))
+//    println("Please enter the amount of money:")
     val buyingAmount: Int? = Console.readLine().toIntOrNull()
     if (buyingAmount != null) {println(generateCoins(buyingAmount))}
 
@@ -46,6 +46,7 @@ fun generateCoins(amount: Int): Map<Coin, Int> {
     var remainder: Int
     var numCoins = mutableMapOf<Coin, Int>()
     if ((amount / 500) != 0){
+        var fiveCoins = generate500(amount)
         val five00 = 500 * amount / 500
         println(five00)
         numCoins += Coin.COIN_500 to amount / 500
@@ -53,5 +54,10 @@ fun generateCoins(amount: Int): Map<Coin, Int> {
     }
 
     return numCoins
+}
+
+fun generate500(amount: Int) {} Coin {
+    val tiny = Coin.COIN_500
+    return tiny
 }
 // [tea,100,4];[coke,200,5] Map<Coin, Int>
