@@ -9,8 +9,9 @@ class Product(val productName: String, val price: Int, private var _quantity: In
         for (char in productName) {
             require(char.isLetter()) { "[ERROR]: product name can only contain letters" }
         }
-        require(price > 0 && price % 10 == 0) { "[ERROR]: invalid price" }
+        require(price >= 100 && price % 10 == 0) { "[ERROR]: invalid price" }
         require(_quantity >= 0) { "[ERROR]: invalid quantity" }
+        // TODO maybe add max amount
     }
 
     fun decreaseQuantity() {

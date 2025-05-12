@@ -48,8 +48,8 @@ Coins are generated randomly and users can add and purchase products to/from the
   - [ ]  It is assumed that bills are not used for change
 
 #### Products
-- [ ]  Users can add products to the machine by specifying the product name, price, and quantity.
-  - [ ]  Product prices start at 100 KRW and must be divisible by 10.
+- [x]  Users can add products to the machine by specifying the product name, price, and quantity.
+  - [x]  Product prices start at 100 KRW and must be divisible by 10.
   - [ ]  ? max amount of products?
 
 #### Purchase and Returning Change
