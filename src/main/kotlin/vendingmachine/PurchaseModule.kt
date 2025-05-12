@@ -1,5 +1,7 @@
 package vendingmachine
 
+import kotlin.math.max
+
 class PurchaseModule(val productInventory: ProductInventory, var coinRepository: CoinRepository, var balance: Int) {
 
 	fun purchasePossible(): Boolean{
@@ -10,7 +12,7 @@ class PurchaseModule(val productInventory: ProductInventory, var coinRepository:
 	}
 
 	fun purchaseItem(productName: String) {
-		if (productName in productInventory.inventory.keys) throw  IllegalStateException("[ERROR] Item does not exist")
+		if (productName !in productInventory.inventory.keys) throw IllegalStateException("[ERROR] Item does not exist")
 		val product = productInventory.inventory[productName]!!
 		if (product.quantity <= 0) throw  IllegalStateException("[ERROR] Not enough quantity for $productName")
 		if (product.price > balance) throw  IllegalStateException("[ERROR] Not enough money for $productName")
@@ -20,24 +22,34 @@ class PurchaseModule(val productInventory: ProductInventory, var coinRepository:
 
 	fun processChange(): HashMap<Int, Int> {
 		val changeMap = hashMapOf<Int, Int>(
-			10 to 0,
-			50 to 0,
+			500 to 0,
 			100 to 0,
-			500 to 0
+			50 to 0,
+			10 to 0,
 		)
+		var currCoin = 500
+		while (balance > 0) {
+			if (coinRepository.coins[currCoin]!! >= 1) {
+				changeMap[currCoin] = max(balance.floorDiv(currCoin), coinRepository.coins[currCoin]!!)
+				balance -= changeMap[currCoin]!! * currCoin
+			}
 
-		changeMap[500] = balance.floorDiv(500)
-		balance -= changeMap[500]!! * 500
-
-		changeMap[100] = balance.floorDiv(100)
-		balance -= changeMap[100]!! * 100
-
-		changeMap[50] = balance.floorDiv(50)
-		balance -= changeMap[50]!! * 50
-
-		changeMap[10] = balance.floorDiv(10)
-		balance -= changeMap[10]!! * 10
-
+			if (currCoin == 500) {
+				currCoin = 100
+				continue
+			}
+			if (currCoin == 100) {
+				currCoin = 50
+				continue
+			}
+			if (currCoin == 50) {
+				currCoin = 10
+				continue
+			}
+			if (currCoin == 10) {
+				break
+			}
+		}
 		return changeMap
 	}
 }
