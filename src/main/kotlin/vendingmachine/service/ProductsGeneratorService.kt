@@ -6,7 +6,7 @@ import vendingmachine.exception.VendingMachineException.InvalidProductQtyExcepti
 import vendingmachine.model.Product
 
 object ProductsGeneratorService {
-    fun generateWith(input: List<String>): List<Product> {
+    fun generateWith(input: List<String>): MutableList<Product> {
         val products = mutableListOf<Product>()
         val regex = Regex("\\[(.*?),(\\d*?),(\\d*?)\\]")
         input.forEach {
