@@ -16,7 +16,7 @@ class machineProducts(private val products: List<Product>) {
                 val productToBeCreated = prod.split(",").map { it.trim() }
                 val productName = productToBeCreated[0].replace("[", "")
                 val productQuantity = productToBeCreated[2].replace("]", "")
-                val newProduct: Product = create(productName,prod[1].toInt() ,productQuantity.toInt())
+                val newProduct: Product = create(productName,productToBeCreated[1].toInt() ,productQuantity.toInt())
                 listProducts.toMutableList().add(newProduct)
             }
             return listProducts
