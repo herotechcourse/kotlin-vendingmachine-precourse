@@ -35,12 +35,12 @@ src/
 - [✅] Build Coins Generating Logic
 - [✅] Build Creating Products logic
 - [✅] Build getting minimum product cost Logic
-- [] Add input validation
+- [✅] Add input validation
 - [✅] Build purchasing item logic
-- [] Build dealing with remaining coins logic
-    - [] Add getting fewest coins possible logic
-- [] Add calcuating unreturned remainder
-- [] Handle exceptions properly
-- [] Write unit tests for all major components
+- [✅] Build dealing with remaining coins logic
+    - [✅] Add getting fewest coins possible logic
+- [✅] Add calcuating unreturned remainder
+- [✅] Handle exceptions properly
+- [✅] Write unit tests for all major components
 - [] Enhance Readability
 - [] Build Error handling method
