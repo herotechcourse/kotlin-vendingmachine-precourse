@@ -7,4 +7,8 @@ object OutputView {
             println("${entry.key.amount} KRW - ${entry.value}")
         }
     }
+
+    fun displayInsertedAmount(amount: Int) {
+        println("\nInserted amount: $amount KRW")
+    }
 }
