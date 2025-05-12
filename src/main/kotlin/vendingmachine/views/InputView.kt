@@ -12,7 +12,7 @@ class InputView {
 	}
 
 	fun readProductInventory(): List<Product> {
-		print("Enter product names, prices, and quantities:")
+		println("Enter product names, prices, and quantities:")
 		val input = Console.readLine().trim()
 		return parseProductInventory(input)
 	}
@@ -22,6 +22,14 @@ class InputView {
 		val input = Console.readLine().trim()
 		return parsePurchaseAmount(input)
 	}
+
+	fun readItem(): String {
+		println("Please enter the name of the product to purchase:")
+		val input = Console.readLine().trim()
+		return input
+	}
+
+
 
 	companion object {
 		private fun parseAnyNumber(input: String, name: String): Int {
