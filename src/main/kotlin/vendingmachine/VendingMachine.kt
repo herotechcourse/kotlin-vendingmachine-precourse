@@ -2,6 +2,8 @@ package vendingmachine
 
 class VendingMachine(
     var changeInventory: Int,
+    var userBalance: Int = 0,
+    
     var numberOf500Coin: Int = 0,
     var numberOf100Coin: Int = 0,
     var numberOf50Coin: Int = 0,

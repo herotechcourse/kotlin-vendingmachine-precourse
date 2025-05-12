@@ -29,6 +29,13 @@ object InputView {
         }
     }
 
+    fun readPurchase(): String {
+        println("Please enter the name of the product to purchase:")
+        val input = readInput()
+        validateInputNotEmpty(input)
+        return input
+    }
+
     private fun readBalanceAmount(): Int {
         println("Please enter the amount of money:")
         val input = readInput()
@@ -109,6 +116,16 @@ object InputView {
         while (true) {
             try {
                 return readBalanceAmount()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
+
+    fun getPurchase(): String {
+        while (true) {
+            try {
+                return readPurchase()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }

@@ -22,10 +22,10 @@ The features will be implemented in the following order:
 - [x] read balance amount of money from user input
 - [x] print inserted balance amount
 
-- [ ] read product to purchase from user input
-  - [ ] validate that product exists
-- [ ] calculate new balance of user
-- [ ] repeat reading product to purchase from user input until
+- [x] read product to purchase from user input
+  - [x] validate that product exists
+- [x] calculate new balance of user
+- [x] repeat reading product to purchase from user input until
 balance is smaller than cheapest product's price
 
 - [ ] for each user input above:
