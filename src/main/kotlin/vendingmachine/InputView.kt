@@ -1,59 +1,86 @@
 package vendingmachine
 
+import camp.nextstep.edu.missionutils.Console
+
 object InputView {
-    private fun getInitialAmount() : String {
-        //ask for input ("Enter the amount the vending machine holds:")
-        //return input as str
+    private fun getInitialAmount() : Int? {
+        println("Enter the amount the vending machine holds:")
+        val initialAmountStr = Console.readLine()
+        return (initialAmountStr.toIntOrNull())
     }
 
-    private fun validateInitialAmount(initAmountString : String) : Int? {
-        //validate if amount is a number, return str converted to int
+    private fun validateInitialAmountInput(initAmountToValidate : Int?) : Int {
+        require (initAmountToValidate != null) {"[ERROR] Please input a valid number"}
+        getInitialAmount()
+        return initAmountToValidate
     }
 
-    fun handleInitialAmount() : Int? {
-        //public function that will be called in main
-        val initAmountString = getInitialAmount()
-        return (validateInitialAmount(initAmountString))
+    fun handleInitialAmountInput() : Int {
+        val initAmount = getInitialAmount()
+        return (validateInitialAmount(initAmount))
     }
 
-    private fun getProducts() : String {
-        //ask for input ("Enter product names, prices, and quantities:")
-        //return input as str
+    private fun getProductsInventory() : String {
+        println("Enter product names, prices, and quantities:")
+        return (Console.readLine())
     }
 
-    private fun validateProducts(productsString : String) : List<Product> {
-        //validate if the input obeys the format: "[Cola,1500,20];[Soda,1000,10]"
-        //return createProducts
+    private fun validateInventory(inventoryString : String) : MutableList<List<String>>? {
+        val productsString = inventoryString.split(";")
+        val inventoryList = mutableListOf<List<String>>()
+        var newProduct : List<String>
+
+        for (product in productsString) {
+            newProduct = validateProducts(product) {
+                inventoryList.add(newProduct)
+            } else {
+                //throw error and prompt back
+            }
+        }
     }
 
-    private fun createProducts(productsString : String) : List<Product> {
+    private fun validateProducts(productString : String) : List<String> {
+        var productList = ListOf<String>()
+        if (productString[0] == '[' && productString[productString.length - 1] == ']') {
+            productString.removePrefix("[")
+            productString.removeSuffix("]")
+            productList = productString.split(",")
+        } else {
+            throw IllegalArgumentException ("Correct usage: [<Product name>,<Product price>,<Product quantity>]")
+        }
+        return (productList)
+    }
+
+    private fun createInventory(inventoryString : String) : List<Product> {
         //create products and return list of products
     }
 
-    fun handleProducts() : List<Product>? {
-        //public function that will be called in main
-        val inputProducts = getProducts()
-        return (validateProducts(inputProducts))
+    fun handleInventory() : List<Product>? {
+        val inputProducts = getProductsInventory()
+        return (createInventory(inputProducts))
     }
 
-    private fun getUserBudget() : String {
-        //ask for input ("Please enter the amount of money:")
-        //return input as str
+    private fun getUserBudget() : Int? {
+        println("Please enter the amount of money:")
+        val userBudgetString = Console.readLine()
+        return (userBudgetString.toIntOrNull())
     }
 
-    private fun validateUserBudget(userBudgetString : String) : Int? {
-        //validate if amount is a number, return str converted to int
+    private fun validateUserBudget(userBudgetToValidate : Int?) : Int {
+        require (userBudgetToValidate != null) {"[ERROR] Please input a valid number"}
+        getUserBudget()
+        return userBudgetToValidate
     }
 
-    fun handleUserBudget() : Int? {
-        //public function that will be called in main
+    fun handleUserBudget() : Int {
         val userBudgetString = getUserBudget()
         return (validateUserBudget(userBudgetString))
     }
 
     private fun getPurchaseOfProduct() : String {
-        //ask for input ("Please enter the name of the product to purchase:")
-        //return str
+        println("Please enter the name of the product to purchase:")
+        val purchaseString = Console.readLine()
+        return (purchaseString)
     }
 
     private fun validatePurchaseOfProduct(purchaseString : String) : Boolean {
