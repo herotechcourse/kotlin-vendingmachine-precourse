@@ -2,7 +2,10 @@ package vendingmachine
 
 class OutputHandler{
 
-    fun displayCoins(Coins:List<Int>){
+    fun displayCoins(numscoins:List<Int>){
+        println(numscoins)
+        for (i in numscoins){
 
+        }
     }
 }
