@@ -11,7 +11,7 @@ class Product(
 
     fun getQuantities(): Int = quantities
 
-    fun setQuantities(newQunatities: Int) {
-        quantities = newQunatities
+    fun setQuantities(newQuantities: Int) {
+        quantities = newQuantities
     }
 }
