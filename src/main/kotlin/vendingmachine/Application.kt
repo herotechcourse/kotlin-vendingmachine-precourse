@@ -3,5 +3,6 @@ package vendingmachine
 import vendingmachine.controller.VendingMachineControllerImpl
 
 fun main() {
-    // TODO: Implement the program
+    val vendingMachineController = VendingMachineControllerImpl()
+    vendingMachineController.run()
 }
