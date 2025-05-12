@@ -91,9 +91,12 @@ object InputView {
         return false
     }
 
-    fun handlePurchaseOfProduct(inventory : mutableMapOf<Product, Int>) {
+    fun handlePurchaseOfProduct(inventory : MutableMap<String, Int>) : Boolean {
         val purchaseString = getPurchaseOfProduct()
         val productExists = validatePurchaseOfProduct(inventory, purchaseString)
-        //logic
+        if (productExists) {
+            return true
+        }
+        return false
     }
 }
